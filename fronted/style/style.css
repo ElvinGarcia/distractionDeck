@@ -1,11 +1,11 @@
-@import '_column.css';
-@import '_footer.css';
-@import '_front_type.css';
-@import '_header.css';
-@import '_layout.css';
-@import '_menu.css';
 @import '_normalize.css';
+@import '_variables.css';
+@import '_front_type.css';
+@import '_layout.css';
+@import '_header.css';
+@import '_footer.css';
+@import '_column.css';
+@import '_menu.css';
 @import '_post.css';
 @import '_search.css';
-@import '_variables.css';
 
