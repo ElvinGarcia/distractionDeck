@@ -1,1 +1,18 @@
 
+.wrapper{
+    background-color: var(--bg-color);
+    display: grid ;
+    height: 100vh;
+    grid-template-columns: 15% 1fr;
+}
+
+.sidebar{
+    background-color: var(--kinda-black);
+    padding:1em;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+
+.menu{
+ border-top: solid var(--smokey-white) 1px;   
+}
