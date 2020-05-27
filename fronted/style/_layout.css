@@ -1,18 +1,32 @@
 
+
+/* entire site 2 columns */
 .wrapper{
-    background-color: var(--bg-color);
     display: grid ;
+    grid-template-columns: 200px auto;
     height: 100vh;
-    grid-template-columns: 15% 1fr;
+    background-color: var(--bg-color);
+    
 }
 
+/* side menu  includes. columns names and subaccount menu */
 .sidebar{
-    background-color: var(--kinda-black);
-    padding:1em;
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: auto auto 1fr 1fr;
+    padding:10px 10px 0px 10px;
+    background-color: var(--kinda-black);
+    color: var(--just-gray);
+    line-height: 18px;
 }
+        
 
-.menu{
- border-top: solid var(--smokey-white) 1px;   
-}
+/* default styles */
+a{
+   color: var(--smokey-white);
+   text-decoration: none;
+ }
+
+ ul {
+    list-style: none;
+    padding-left: 0;
+}​

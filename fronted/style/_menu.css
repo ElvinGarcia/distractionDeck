@@ -1,0 +1,57 @@
+
+/* post button */
+#post{
+height:36px;
+border-radius:45px;
+border:var(--twitter-blue) ;
+background-color: var(--twitter-blue);
+color:white;
+font-weight: 400;
+margin:8px 0 10px 0;
+padding: 9px 18px;
+font-size: 16px;
+}
+
+input#post:hover{
+background-color: var(--hover-blue);
+border-color: var(--kinda-black);
+}
+
+/* search box */
+#search{
+  position: relative;
+  border-radius: 45px;
+  border:solid 1px black ;
+  background-color: black;
+  color:var(--just-gray);
+  line-height: 25px;
+  height: 36px;
+  width: 180px;
+  padding: 4px 30px 4px 12px;
+}
+
+/* account menu  'add column' 'collapse' etc. */
+.menu{
+    border-top: var(--just-gray) solid 1px;    
+}
+
+.menu a i{
+   color:var(--twitter-blue);
+}
+
+
+ /* list items */
+.sidebar li{
+  margin: 15px;
+
+}
+
+/* icons settings*/
+a i{
+    color:var(--just-gray);
+    padding:1px;
+    font-size: 20px;
+    height: 1px;
+    width: 24px;
+    margin-right:5px;
+}

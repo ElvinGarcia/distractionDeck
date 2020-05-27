@@ -1,3 +1,4 @@
+@import url(href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
 @import '_normalize.css';
 @import '_variables.css';
 @import '_front_type.css';
@@ -8,4 +9,8 @@
 @import '_menu.css';
 @import '_post.css';
 @import '_search.css';
+
+
+/* third party resources */
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
 

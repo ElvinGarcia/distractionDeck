@@ -2,10 +2,13 @@
 :root {
   --bg-color: #282923;
   --twitter-blue: #009DF6;
+  --hover-blue:#005fd1;
+  --link-blue:#97e3ff;
   --card-blue: #13202C;
   --heart-red: #F60052;
   --retweet-green: #01BC62;
   --top-divider-blue: #637580;  /* ❤️ */
   --smokey-white:#f5f5f5;
+  --just-gray:#8599A7;
   --kinda-black:#1A2839;
 }
