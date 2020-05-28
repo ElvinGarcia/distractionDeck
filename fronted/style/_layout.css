@@ -2,21 +2,33 @@
 
 /* entire site 2 columns */
 .wrapper{
-    display: grid ;
-    grid-template-columns: 200px auto;
-    height: 100vh;
+    display: grid;
+    position: absolute;
+    grid-template-columns: 200px auto-fit;
+    grid-auto-flow: column;
+    min-height: 100vh;
     background-color: var(--bg-color);
-    
 }
 
 /* side menu  includes. columns names and subaccount menu */
 .sidebar{
     display: grid;
-    grid-template-rows: auto auto 1fr 1fr;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left:0;
+    grid-auto-rows: max-content;
+    grid-auto-flow: row;
     padding:10px 10px 0px 10px;
     background-color: var(--kinda-black);
     color: var(--just-gray);
     line-height: 18px;
+    min-height: 100vh;
+    max-width: 200px;
+ 
+    
+
+    /* border: green solid 1px; */
 }
         
 
@@ -26,7 +38,8 @@ a{
    text-decoration: none;
  }
 
- ul {
+
+ ul{
     list-style: none;
-    padding-left: 0;
-}​
+    padding-left:0;
+}

@@ -1,0 +1,10 @@
+
+.body-column-list{
+    display: grid;
+    grid-auto-columns: 300px;
+    grid-auto-flow: column;
+    color:var(--smokey-white);
+    border: solid var(--just-black) 2px;
+    margin-left: 205px;
+    
+}
