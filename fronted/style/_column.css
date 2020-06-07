@@ -1,10 +1,37 @@
 
 .body-column-list{
     display: grid;
-    grid-auto-columns: 300px;
+    grid-auto-columns: 300px ; 
     grid-auto-flow: column;
+    grid-auto-columns: 300px;
+    grid-template-columns: repeat(auto-fill, 300px); 
     color:var(--smokey-white);
+    background-color: var(--kinda-black);
+    /* border: solid var(--just-black) 2px; */
+}
+
+.body-column-list > *{
     border: solid var(--just-black) 2px;
-    margin-left: 205px;
-    
+}
+
+.posts{
+    border: solid red 2px;
+    overflow: scroll;
+}
+
+.column-header{
+    display:flex;
+    position: sticky;
+    top:0px;
+    justify-content: space-evenly;
+    max-height: 50px;
+    overflow: hidden;
+    border-bottom: 1px solid #14171a;
+    background-color: var(--just-black);
+}
+
+.column-header > i{
+line-height: 50px;
+font-size: 20px;
+font-weight: 400;
 }

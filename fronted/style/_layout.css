@@ -1,36 +1,26 @@
 
 
-/* entire site 2 columns */
-.wrapper{
-    display: grid;
-    position: absolute;
-    grid-template-columns: 200px auto-fit;
-    grid-auto-flow: column;
-    min-height: 100vh;
+body{
     background-color: var(--bg-color);
 }
 
-/* side menu  includes. columns names and subaccount menu */
-.sidebar{
+/* entire site 2 columns */
+.wrapper{
     display: grid;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left:0;
-    grid-auto-rows: max-content;
-    grid-auto-flow: row;
-    padding:10px 10px 0px 10px;
-    background-color: var(--kinda-black);
-    color: var(--just-gray);
-    line-height: 18px;
-    min-height: 100vh;
-    max-width: 200px;
- 
-    
-
-    /* border: green solid 1px; */
+    grid-template-columns: [left-pane] 200px [right-pane] auto-fill;
 }
+
         
+.sidebar{
+    position: fixed;
+    z-index: 1;
+}
+
+.body-column-list{
+    margin-left: 205px;
+    
+}
+
 
 /* default styles */
 a{
@@ -42,4 +32,14 @@ a{
  ul{
     list-style: none;
     padding-left:0;
+}
+
+/* icons settings*/
+a i{
+    color:var(--just-gray);
+    padding:1px;
+    font-size: 20px;
+    height: 1px;
+    width: 24px;
+    margin-right:5px;
 }
