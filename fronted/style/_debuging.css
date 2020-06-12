@@ -18,3 +18,15 @@
     z-index: 1;
  */
 }
+
+#overlay{
+    /* border: red solid 1px; */
+}
+
+.login-container{   
+    /* border: yellow solid 1px; */
+}
+
+.login-container fieldset{
+    /* border: green solid 1px; */
+} 

@@ -1,0 +1,38 @@
+
+#overlay{
+    position: fixed;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    height: 100%;
+    color: var(--smokey-white);
+    background-color:rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.login-container{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 1px;
+    
+}
+
+.login-container fieldset{
+    display: flex;
+    flex-flow:wrap;
+    width: 105em;
+    justify-content:  flex-end;
+    align-items: center;
+    gap:7px;
+}
+.login-container fieldset  input{
+    border-radius: 30px;
+
+}
+
+#heart_signage{
+    height:655px;
+    width: 105em;
+}

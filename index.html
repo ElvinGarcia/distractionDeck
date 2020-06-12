@@ -7,10 +7,31 @@
     <title>DistractionDeck</title>
     <link rel="stylesheet" href="/fronted/style/style.css">
     <script type="module" src="/fronted/lib/scripts.js"></script>
-
 </head>
 
+
+
 <body>
+    <div id="overlay">
+        <div class="login-container">
+            <img  src="./fronted/assests/public/static/heart-and-zero-neon-light-signage-2694434.jpg" alt="heart with neon light signage" id="heart_signage">
+            <form name="login" action="/login" method="POST"></form>
+                <fieldset>
+                    <legend> Login To Get Distracted </legend>
+                    
+                    <label for="username">User Name:</label>
+                    <input type="text" name="username" id="login-username" required>
+                    
+                    
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="login-password" required>
+                    
+                    <input type="submit" value="login">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
     <div class="wrapper">
         <div class="sidebar">
             <input type="button" value="Post" id="post">

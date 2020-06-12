@@ -1,9 +1,6 @@
 
 
- function test (comm){
-  console.log(comm)
-               };
-
-export{test} ;
-
-
+function hiddenjs(params) {
+    let body = document.getElementsByTagName("body") ;
+    body.
+}
