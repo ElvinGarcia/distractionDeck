@@ -14,3 +14,9 @@
   [] set a seperate controller for the login session and procedure   
   [] set a remember_digest session
   
+# Requirements to Schedule a Review
+   [x] A link to your project repo, with code for your Rails backend and HTML / CSS / JavaScript frontend.
+   [x] A README.md file describing your application
+   [] A Blog Post about your application  
+   [] A 2-4 minute Video Demo introducing your application
+
