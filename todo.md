@@ -10,7 +10,7 @@
 
 # backend 
  ## routes
-  [] creaate seperate route for login
+  [x] creaate seperate route for login
   [] set a seperate controller for the login session and procedure   
   [] set a remember_digest session
   
@@ -20,3 +20,8 @@
    [] A Blog Post about your application  
    [] A 2-4 minute Video Demo introducing your application
 
+
+# left @
+- js geneate individual post under post.js
+  - look into making creating this func into a class to meet requirement 
+  - create backend request into a class

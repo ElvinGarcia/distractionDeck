@@ -1,16 +1,21 @@
-
-
 // import {test} from "./modules/overlay.js";
-import * as Module from './modules/overlay.js'
 // import { m } from './modules/message.js';
+import * as Overlay from './modules/overlay.js'
+import * as Post from './modules/post.js'
 
-Module.test("Doing what works Doing what matters");
+const BASE_URL = "http://localhost:3000"; 
 
+window.onload = ()=>{
+    eventListerners();
+}
 
+function eventListerners() {
+    const login_form = document.getElementById("login_form");
+    login_form.addEventListener("submit", (e)=>{loginForm(e);});
+}
 
-document.querySelector(".main-columns-list>ul").addEventListener("click", () => {
- import("./modules/message.js").then((Module) => {
-  console.log(Module);
- });
-});
-
+//  hiddes the init overlay
+function loginForm(e) {
+    e.preventDefault();
+    Overlay.hiddenjs();
+ }

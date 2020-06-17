@@ -1,6 +1,6 @@
 
 
-function hiddenjs(params) {
-    let body = document.getElementsByTagName("body") ;
-    body.
+export function hiddenjs() {
+    const overlay = document.getElementById("overlay");
+    overlay.style.visibility="hidden"
 }
