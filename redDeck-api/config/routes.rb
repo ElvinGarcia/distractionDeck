@@ -8,7 +8,7 @@ Rails.application.routes.draw do
    end
  end
 
-  post :login, to: 'sessions#login' 
+  resources :login, to: 'sessions#login' 
   # resources :socials
   # resources :columns
   # resources :users

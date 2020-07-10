@@ -1,6 +1,16 @@
 
 
-export function hiddenjs() {
-    const overlay = document.getElementById("overlay");
-    overlay.style.visibility="hidden"
-}
+export class Overlay {
+        constructor(){
+        this.overlay = document.getElementById("overlay");
+         }
+
+        get hidden() {
+         this.overlay.style.visibility = "hidden";
+        }
+
+        get show(){
+            this.overlay.style.visibility = "";
+        }
+
+       }

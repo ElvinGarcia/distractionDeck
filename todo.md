@@ -4,9 +4,16 @@
  ## create a signup or create account overlay
    [x] move login button to the right
    [x] round the edges on the fieldtypes
-   [] overlay connects to rails backend
+   [x] overlay connects to rails backend
       - set a debugger on route.rb to make sure its connecting
    [] overlay is triigger if there are no session cookies saved
+
+
+<!-- need to set a browser cookie with the rails session Id 
+   which will be used to compare both session id when making req.
+   Will set an expiration date of 60 days.
+ -->
+
 
 # backend 
  ## routes
@@ -22,6 +29,17 @@
 
 
 # left @
-- js geneate individual post under post.js
-  - look into making creating this func into a class to meet requirement 
-  - create backend request into a class
+[x] js geneate new columns under column.js
+[x] js geneate individual post under post.js
+[ ] create the request to the rails server BASE_URL/login 
+  [] create backend request into a class
+  [] look into making creating these func into a class to meet requirement 
+
+# notes
+ ## backend 
+ [] social belongs to user through columns
+    column belongs to social
+    column belongs to user
+user has_many social through columns
+
+
