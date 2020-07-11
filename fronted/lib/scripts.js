@@ -28,7 +28,4 @@ function eventListerners() {
     Request.FetchRequest.send(BASE_URL+"/login", header).then( (data)=>{console.log(data)})
     let overlay = new Login.Overlay();
     overlay.hidden;
-    
-    
-
  }
