@@ -9,8 +9,6 @@ Rails.application.routes.draw do
  end
 
   resources :login, to: 'sessions#login' 
-  # resources :socials
-  # resources :columns
-  # resources :users
+  get '/auth/:provider/callback', to: 'sessions#login' 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

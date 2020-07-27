@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     # remember(@user) if params[:user][:remember] == "1"
     render json: UserSerializer.new(@user)
    else
-        flash[:alert]="Invalid email/password combination"
+        alert[:alert]="Invalid email/password combination"
         redirect_to login_path
   end
 end
@@ -20,6 +20,11 @@ end
 end
 
 
+ protected
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end
 
 
 
