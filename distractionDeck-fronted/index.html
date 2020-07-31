@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DistractionDeck</title>
-    <link rel="stylesheet" href="/fronted/style/style.css">
-    <script type="module" src="/fronted/lib/scripts.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+
 </head>
 
 
@@ -14,17 +14,19 @@
 <body>
     <div id="overlay">
         <div class="login-container">
-            <img  src="./fronted/assests/public/static/heart-and-zero-neon-light-signage-2694434.jpg" alt="heart with neon light signage" id="heart_signage">
+            <img src="assests/public/static/heart-and-zero-neon-light-signage-2694434.jpg"
+                alt="heart with neon light signage" id="heart_signage">
+            <div id="alert"></div>
             <form id="login_form" name="login" action="" method="POST">
                 <fieldset>
                     <legend> Login To Get Distracted </legend>
-                    
+
                     <label for="username">User Name:</label>
                     <input type="text" name="username" id="username" required>
-                    
+
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" required>
-                    
+
                     <input type="submit" value="login">
                 </fieldset>
             </form>
@@ -55,8 +57,12 @@
                         <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
                         <li><a href="#">[Profile Name Goes here] <span>[@username goes here]</ span></a></li>
                         <li> <a href="#">[Logo goes here]</a></li>
-                        <li> <a href="/auth/twitter"><img src="./fronted/assests/public/static/sign-in-with-twitter-medium.png" alt="twitter-login" class="third-party-login"></a></li>
-                        <li> <a href="/auth/twitter"><img src="./fronted/assests/public/static/sign-in-with-twitter-medium.png" alt="twitter-login" class="third-party-login"></a></li>
+                        <li> <a href="/auth/twitter"><img
+                                    src="./fronted/assests/public/static/sign-in-with-twitter-medium.png"
+                                    alt="twitter-login" class="third-party-login"></a></li>
+                        <li> <a href="/auth/twitter"><img
+                                    src="./fronted/assests/public/static/sign-in-with-twitter-medium.png"
+                                    alt="twitter-login" class="third-party-login"></a></li>
                     </ul>
                 </div>
                 <!-- End of Columns list -->
@@ -407,6 +413,13 @@
         </div>
         <!-- end of wrapper -->
     </div>
+
+
 </body>
+
+<script src="src/adapters/DecksAdapter.js"></script>
+<script src="src/components/decks.js"></script>
+<script src="src/components/app.js"></script>
+<script src="src/scripts.js"></script>
 
 </html>

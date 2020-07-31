@@ -1,0 +1,13 @@
+
+#alert{
+display: none;
+position: absolute;
+top:0;
+padding: 20px;
+background-color: #5b6dcd;
+color: yellow;
+opacity: 0.83;
+transition: opacity 0.6s;
+margin-bottom: 15px;
+border-radius: 25% 10%;
+}

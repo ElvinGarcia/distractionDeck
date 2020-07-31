@@ -6,8 +6,8 @@
    [x] round the edges on the fieldtypes
    [x] overlay connects to rails backend
       - set a debugger on route.rb to make sure its connecting
+   [x] alert on the login page when the authentication fails 
    [] overlay is triigger if there are no session cookies saved
-
 
 <!-- need to set a browser cookie with the rails session Id 
    which will be used to compare both session id when making req.
@@ -31,7 +31,7 @@
 # left @
 [x] js geneate new columns under column.js
 [x] js geneate individual post under post.js
-[ ] create the request to the rails server BASE_URL/login 
+[x] create the request to the rails server BASE_URL/login 
   [] create backend request into a class
   [] look into making creating these func into a class to meet requirement 
 

@@ -3,8 +3,7 @@ module SessionsHelper
 
     def log_in(user)
         #add user to the current session
-        session[:user_id] = user.id
-        
+        session[:user_id] = user.id 
     end
 
      #logout the user and sets @user to nil
