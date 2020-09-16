@@ -1,7 +1,7 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::HastagsController < ApplicationController
 
-    def new
-    
+      def new
+
   end
 
   def create
@@ -9,31 +9,30 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
- 
+
   end
 
   def index
- 
+
   end
 
 
   def login
- 
+
   end
 
   def edit
- 
+
   end
 
   def update
- 
+
 
   end
 
   def destroy
- 
+
  end
 
-    
 
 end

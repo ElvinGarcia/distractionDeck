@@ -10,37 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_203230) do
+ActiveRecord::Schema.define(version: 2020_08_28_012450) do
 
   create_table "columns", force: :cascade do |t|
-    t.string "home"
-    t.string "notifications"
-    t.string "user"
-    t.string "mentions"
-    t.string "followers"
-    t.string "trending"
-    t.string "messages"
-    t.string "scheduled"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], name: "index_columns_on_user_id"
   end
 
-  create_table "socials", force: :cascade do |t|
-    t.string "twitter"
-    t.string "reddit"
-    t.string "instagram"
-    t.string "github"
-    t.string "facebook"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "hastags", force: :cascade do |t|
+    t.string "tag"
+    t.integer "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["post_id"], name: "index_hastags_on_post_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "column_id"
+    t.index ["column_id"], name: "index_posts_on_column_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

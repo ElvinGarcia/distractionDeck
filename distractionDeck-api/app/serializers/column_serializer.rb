@@ -1,4 +1,4 @@
 class ColumnSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :name, :user_id
 end

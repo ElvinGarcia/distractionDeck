@@ -1,0 +1,13 @@
+--- !ruby/object:ActiveRecord::ConnectionAdapters::SchemaCache
+columns: {}
+columns_hash: {}
+primary_keys: {}
+data_sources: {}
+indexes: {}
+version: 0
+database_version: !ruby/object:ActiveRecord::ConnectionAdapters::AbstractAdapter::Version
+  version:
+  - 3
+  - 32
+  - 3
+  full_version_string:

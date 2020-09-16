@@ -1,6 +1,6 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::PostsController < ApplicationController
 
-    def new
+      def new
     
   end
 
@@ -33,7 +33,4 @@ class Api::V1::UsersController < ApplicationController
   def destroy
  
  end
-
-    
-
 end

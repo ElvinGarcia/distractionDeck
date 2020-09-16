@@ -1,19 +1,11 @@
 class SessionsController < ApplicationController
   def login
-    @user = User.find_by(name: params[:username])
-    if @user&.authenticate(params[:password])
-      log_in(@user)
-      # verifies via params that the user selected to be remember then runs
-      # remember user instant method
-      # remember(@user) if params[:user][:remember] == "1"
-
-      render json: @user, status: 200
-      byebug
-
+    user = User.find_by(name: params[:username])
+    if user.authenticate(params[:password])
+      log_in(user)
+       render :json => UserSerializer.new(user).to_serialized_json, status: 200
     else
-      render json: { alert: 'Invalid email/password combination' }
-      # alert[:alert] = 'Invalid email/password combination'
-      # redirect_to login_path
+      render json: { alert: 'Invalid email/password combination' }, status: 401
     end
  end
 
