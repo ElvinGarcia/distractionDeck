@@ -4,7 +4,8 @@ class UserSerializer
   end
 
   def to_serialized_json
-    options = {include: [:posts,:columns], except:[:password_digest,:password]}
+    # user => posts => columns
+    options = {include: [posts:{include: [:column]}], except:[:password_digest,:password]}
     @user.to_json(options)
 
   end
