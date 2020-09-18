@@ -16,8 +16,10 @@
 [x] how to create a cookie on the client side
 [x] how to read a cookie on the client side
 [x] many posts through columns accessed via to_json
-  [] create each column first and set on id to each one on the page correspoding to the json id
-  [] take each post find the id number of the column on the page and attach it to that column
+[x] structured JSON response
+[x] set cookies and session preferences
+[] create each column first and set on id to each one on the page correspoding to the json id
+[] take each post find the id number of the column on the page and attach it to that column
 
 <!-- need to set a browser cookie with the rails session Id
    which will be used to compare both session id when making req.
