@@ -31,32 +31,33 @@ class Decks {
         this.login_form.reset();
     }
     async loginRequest(obj) {
-        const response = await this.adapter.loginRequest(obj);
+        const user = await this.adapter.loginRequest(obj);
         // removes any previous alerts
-        debugger;
         this.alert.style.display = "none";
 
         //calls function to setup preference cookie
-        this.setPreference(response)
+        this.setCookies(user)
         // setPreference(response["data"]["attributes"])
 
         // removes login ovarlay
         document.getElementById("overlay").style.display = "none"
 
-        this.renderPost(obj)
+        this.renderPost(user)
     }
 
-    setPreference(obj) {
+    setCookies(user) {
         //creates a session cookie inorder to store user login preferences
-       // sessionStorage['session_login'] = "login = true";
+        sessionStorage['session_login'] = "login = true";
+        let d = new Date();
+        d.setTime(d.getTime() + (60*24*60*60*1000));
+        let expires = "expires=" + d.toUTCString();
+
+        document.cookie = "name" + "=" + `${user.name}` + ";" + "expires" + "=" + expires + "UTC" +";" + ";sameSite=Lax"
     }
 
-    renderPost(obj) {
+    renderPost(user) {
         // starts rendering the posts
-        const user = obj;
-        const posts = obj.posts;
-        const columns = obj.columns;
-
+        debugger
         //     user.columns.forEach(element => { this.columns.push(element) });
         //  console.log(this.columns)
 
