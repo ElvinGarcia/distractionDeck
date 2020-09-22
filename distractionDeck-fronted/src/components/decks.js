@@ -3,10 +3,8 @@ class Decks {
         this.adapter = new DecksAdapter();
         this.initiBindingsAndEventListeners();
         // make this into a conditional statement
-        if (this.loggedIn()) {
-            document.getElementById("overlay").style.display = "none"
-        }
-
+        if (this.loggedIn()) { document.getElementById("overlay").style.display = "none" }
+        this.columns = new PageBuilder();
 
     }
 
@@ -57,7 +55,9 @@ class Decks {
 
     renderPost(user) {
         // starts rendering the posts
-        debugger
+        this.columns.mainMenu(user.columns, link);
+        this.columns.column();
+
         //     user.columns.forEach(element => { this.columns.push(element) });
         //  console.log(this.columns)
 
