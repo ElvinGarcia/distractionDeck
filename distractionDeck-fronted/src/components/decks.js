@@ -2,9 +2,11 @@ class Decks {
     constructor() {
         this.adapter = new DecksAdapter();
         this.initiBindingsAndEventListeners();
-        // make this into a conditional statement
-        if (this.loggedIn()) { document.getElementById("overlay").style.display = "none" }
-        this.columns = new PageBuilder();
+        this.pageBuilder = new PageBuilder();
+        if (this.loggedIn()) {
+            document.getElementById("overlay").style.display = "none"
+            this.renderPost();
+        }
 
     }
 
@@ -16,7 +18,7 @@ class Decks {
     }
 
     loggedIn() {
-        return (sessionStorage.getItem("session_login") === "login = true" ? true : false);
+        return (sessionStorage.getItem("login") === "true" ? true : false);
     }
 
     loginForm(e) {
@@ -45,18 +47,18 @@ class Decks {
 
     setCookies(user) {
         //creates a session cookie inorder to store user login preferences
-        sessionStorage['session_login'] = "login = true";
-        let d = new Date();
-        d.setTime(d.getTime() + (60*24*60*60*1000));
-        let expires = "expires=" + d.toUTCString();
+        sessionStorage['login'] = "true";
+        setCookie("name", `${user.name}`)
+        setCookie("email", `${user.email}`)
+        setCookie("id", `${user.id}`)
 
-        document.cookie = "name" + "=" + `${user.name}` + ";" + "expires" + "=" + expires + "UTC" +";" + ";sameSite=Lax"
     }
 
-    renderPost(user) {
+    renderPost() {
+        this.pageBuilder.initLayout();
         // starts rendering the posts
-        this.columns.mainMenu(user.columns, link);
-        this.columns.column();
+        // this.pageBuilder.mainMenu(user.columns, link);
+        // this.pageBuilder.column();
 
         //     user.columns.forEach(element => { this.columns.push(element) });
         //  console.log(this.columns)
