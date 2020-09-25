@@ -18,6 +18,8 @@
 [x] many posts through columns accessed via to_json
 [x] structured JSON response
 [x] set cookies and session preferences
+[x] read from the cookie the username and email instead of the promise inorder to maintain user info during refresh
+[x] how to create and read multiply cookies
 [] create each column first and set on id to each one on the page correspoding to the json id
 [] take each post find the id number of the column on the page and attach it to that column
 

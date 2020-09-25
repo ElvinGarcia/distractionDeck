@@ -47,10 +47,10 @@ class Decks {
 
     setCookies(user) {
         //creates a session cookie inorder to store user login preferences
-        sessionStorage['login'] = "true";
-        setCookie("name", `${user.name}`)
-        setCookie("email", `${user.email}`)
-        setCookie("id", `${user.id}`)
+         sessionStorage['login'] = "true";
+        setCookie("name", `${user.name}`);
+        setCookie("email", `${user.email}`);
+        setCookie("id", `${user.id}`);
 
     }
 
