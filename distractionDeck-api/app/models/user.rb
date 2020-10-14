@@ -1,9 +1,8 @@
 class User < ApplicationRecord
-  has_many :posts
-  has_many :columns, through: :posts
-
-  # has_many :columns, dependent: :destroy
-  # has_many :posts, through: :columns
+    has_many :columns
+    has_many :posts
+    #has_many :columns, through: :posts
+    # has_many :posts, through: :columns
 
   after_create :column_init
 
@@ -15,6 +14,7 @@ class User < ApplicationRecord
 
   # standard validations
   validates :name, presence: true, length: { minimum: 5 }
+  validates :username, presence: true, length: { minimum: 5 }
 
   # converts email to downcase  before saving it inorder to prevent inconsistency
   before_save { email.downcase! }
@@ -27,10 +27,13 @@ class User < ApplicationRecord
   def column_init
     if columns.empty?
       columns.new(name: 'Home').save
-      columns.new(name: 'Popular').save
-      columns.new(name: 'All').save
+      columns.new(name: 'Notification').save
+      columns.new(name: 'User').save
       columns.new(name: 'Mentions').save
-      columns.new(name: 'Favorites').save
+      columns.new(name: 'Followers').save
+      columns.new(name: 'Trending').save
+      columns.new(name: 'Messages').save
+      columns.new(name: 'Scheduled').save
     end
   end
 end
