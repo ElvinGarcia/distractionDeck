@@ -20,8 +20,11 @@
 [x] set cookies and session preferences
 [x] read from the cookie the username and email instead of the promise inorder to maintain user info during refresh
 [x] how to create and read multiply cookies
+[x] how to add a post to the correct user and to the home column on creation
+[x] update json serializer response
 [] create each column first and set on id to each one on the page correspoding to the json id
 [] take each post find the id number of the column on the page and attach it to that column
+[] swap local storage and session storage.
 
 <!-- need to set a browser cookie with the rails session Id
    which will be used to compare both session id when making req.
