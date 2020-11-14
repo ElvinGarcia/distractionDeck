@@ -22,16 +22,22 @@
 [x] how to create and read multiply cookies
 [x] how to add a post to the correct user and to the home column on creation
 [x] update json serializer response
-[] create each column first and set on id to each one on the page correspoding to the json id
-[] take each post find the id number of the column on the page and attach it to that column
+[x] create each column first and set on id to each one on the page correspoding to the json id
+[x] create the column on the page to match the id with that of the column list.
+[x] take each post find the id number of the column on the page and attach it to that column
 [] swap local storage and session storage.
 
-<!-- need to set a browser cookie with the rails session Id
-   which will be used to compare both session id when making req.
-   Will set an expiration date of 60 days.
- -->
+
 
 # backend
+[] Create
+    - create a form that would appear when the user presses the post button
+[] Read
+
+[] Update
+    - set an edit button for each tweet that would display an edit form when pressed
+[] Delete
+    - display and delete button for each tweet.
 
 ## routes
 
@@ -43,7 +49,7 @@
 
 [x] A link to your project repo, with code for your Rails backend and HTML / CSS / JavaScript frontend.
 [x] A README.md file describing your application
-[] A Blog Post about your application
+[x] A Blog Post about your application
 [] A 2-4 minute Video Demo introducing your application
 
 # left @
@@ -58,7 +64,7 @@
 
 ## backend
 
-[] social belongs to user through columns
+[x] social belongs to user through columns
 column belongs to social
 column belongs to user
 user has_many social through columns
