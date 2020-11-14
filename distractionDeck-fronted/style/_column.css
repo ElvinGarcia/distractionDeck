@@ -1,13 +1,13 @@
 
 .body-column-list{
     display: grid;
-    grid-auto-columns: 300px ; 
+    grid-auto-columns: 300px ;
     grid-auto-flow: column;
     grid-auto-columns: 300px;
-    grid-template-columns: repeat(auto-fill, 300px); 
+    grid-template-columns: repeat(auto-fill, 300px);
     color:var(--smokey-white);
     background-color: var(--kinda-black);
-    /* border: solid var(--just-black) 2px; */
+    height: 98vh;
 }
 
 .body-column-list > *{
@@ -15,8 +15,7 @@
 }
 
 .posts{
-    border: solid red 2px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .column-header{

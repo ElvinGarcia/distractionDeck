@@ -1,7 +1,6 @@
 
 function post(obj) {
 
-
   }
 
 function getcolumns() {
@@ -27,3 +26,42 @@ function createPost() {
     </div>`;
     return post
 }
+
+function composeContainer() {
+  let div = document.createElement("div");
+  div.innerHTML = `
+    <div id="postMenu">
+    <header>
+        <ul>
+            <li>Post</li>
+            <li> <a href="">X </a> </li>
+        </ul>
+        <hr>
+        <break>
+    </header>
+    <div id='acconts'>
+        <p>From :
+        ${getCookie("name")}
+        </p>
+    </div>
+    <div id="compose-area">
+        <header>New Post</header>
+
+        <form action="">
+            <textarea placeholder="What's happening?"   maxlength = "280" required></textarea>
+            <button id="send-button" title="Post (⌘Return)">Post</button>
+        </form>
+    </div>
+    <div id="options">
+        <ul>
+            <li><button> Add Images or Videos</button></li>
+            <li><button> Schedule a Post</button></li>
+            <li><button> Direct Message</button></li>
+        </ul>
+    </div>
+    </div>
+     `
+
+  return div;
+}
+

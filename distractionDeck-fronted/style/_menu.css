@@ -1,33 +1,40 @@
 
 /* side menu  includes. columns names and subaccount menu */
-.sidebar{
+.sidebar {
     display: grid;
     top: 0;
     bottom: 0;
     left:0;
     grid-auto-rows: max-content;
-    grid-auto-flow: row;
+    grid-auto-flow: column;
     padding:10px 10px 0px 10px;
     background-color: var(--kinda-black);
     color: var(--just-gray);
     line-height: 18px;
     min-height: 100vh;
-    max-width: 200px;
+    max-width: 100%;
+}
+
+/* list items */
+.sidebar li{
+ margin: 15px;
 }
 
 /* post button */
-#post{
-height:36px;
+#post {
+max-height:36px;
+width: 100%;
 border-radius:45px;
 border:var(--twitter-blue) ;
 background-color: var(--twitter-blue);
 color:white;
 font-weight: 400;
-margin:8px 0 10px 0;
+margin:8px 0 0 0;
 padding: 9px 18px;
 font-size: 16px;
 }
 
+/* post button hover */
 input#post:hover{
 background-color: var(--hover-blue);
 border-color: var(--kinda-black);
@@ -41,24 +48,18 @@ border-color: var(--kinda-black);
   background-color: black;
   color:var(--just-gray);
   line-height: 25px;
-  height: 36px;
-  width: 180px;
+  max-height: 36px;
+  max-width: 150px;
   padding: 4px 30px 4px 12px;
 }
 
 /* account menu  'add column' 'collapse' etc. */
 .menu{
-    border-top: var(--just-gray) solid 1px;    
+    border-top: var(--just-gray) solid 1px;
 }
 
 .menu a i{
    color:var(--twitter-blue);
 }
 
-
- /* list items */
-.sidebar li{
-  margin: 15px;
-
-}
 

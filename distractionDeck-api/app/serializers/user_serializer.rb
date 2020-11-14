@@ -4,10 +4,10 @@ class UserSerializer
   end
 
   def to_serialized_json
+    #options need to sanitized from revealing the password_digest
     # user => columns => posts
-    options = {include: [columns:{include: [:posts]}], except:[:password_digest,:password]}
+    options = {include: [columns:{include:[posts:{include: :user, except:[:password_digest,:password] }]}], except:[:password_digest,:password]}
     @user.to_json(options)
-
   end
 
 end

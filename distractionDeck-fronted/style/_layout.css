@@ -10,15 +10,15 @@ body{
     grid-template-columns: [left-pane] 200px [right-pane] auto-fill;
 }
 
-        
+
 .sidebar{
     position: fixed;
     z-index: 1;
 }
 
 .body-column-list{
-    margin-left: 205px;
-    
+    margin-left:auto;
+
 }
 
 

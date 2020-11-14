@@ -37,10 +37,15 @@
 
         <div class="sidebar">
             <!-- search bar -->
-            <input type="button" value="Post" id="post">
-            <input type="text" id="search" placeholder="Search..">
 
             <div class="main-columns-list">
+                <div class="post-search">
+                    <ul>
+                        <li> <input type="button" value="Post" id="post"> </li>
+                        <li><input type="text" id="search" placeholder="Search.."></li>
+                    </ul>
+                </div>
+
                 <div id="columnList">
 
                 </div>
@@ -49,16 +54,23 @@
                 </div>
                 <!-- End of Columns list -->
             </div>
-            <!-- end of sidebar  -->
+
+            <!-- start of post menu -->
+            <div id="post-menu" style="display: none;">
+
+        <!-- end of post menu -->
         </div>
+        <!-- end of sidebar  -->
+
+
 
         <div class="body-column-list">
-
-            <!-- body-column-list -->
+            <!-- start of body-column-list -->
         </div>
-        <!-- end of wrapper -->
-    </div>
+            <!-- end of body-column-list -->
 
+    </div>
+    <!-- end of wrapper -->
 
 </body>
 

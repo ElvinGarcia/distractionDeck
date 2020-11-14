@@ -27,8 +27,9 @@ class User < ApplicationRecord
   def column_init
     if columns.empty?
       columns.new(name: 'Home').save
-      columns.new(name: 'Notification').save
+      columns.new(name: 'Notifications').save
       columns.new(name: 'User').save
+      columns.new(name: 'Likes').save
       columns.new(name: 'Mentions').save
       columns.new(name: 'Followers').save
       columns.new(name: 'Trending').save

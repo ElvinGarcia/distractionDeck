@@ -2,7 +2,6 @@ class Decks {
     constructor() {
         this.adapter = new DecksAdapter();
         this.initiBindingsAndEventListeners();
-        this.pageBuilder = new PageBuilder();
         if (this.loggedIn()) {
             document.getElementById("overlay").style.display = "none"
             this.renderPost();
@@ -10,17 +9,23 @@ class Decks {
 
     }
 
+
+    // finds elements on the page columns, alert, login_form
     initiBindingsAndEventListeners() {
         this.columns = [];
         this.alert = document.querySelector("#alert");
         this.login_form = document.querySelector("form#login_form");
         this.login_form.addEventListener("submit", this.loginForm.bind(this));
+        this.post_request = document.querySelector("input#post");
+        this.post_request.addEventListener("click", this.postRequest.bind(this));
     }
 
+    // checks if user is logged in by checking cookie
     loggedIn() {
         return (sessionStorage.getItem("login") === "true" ? true : false);
     }
 
+    // login form and triggers
     loginForm(e) {
         e.preventDefault();
         const user = {
@@ -30,6 +35,27 @@ class Decks {
         this.loginRequest(user);
         this.login_form.reset();
     }
+
+    // post form toggle
+    postRequest(e) {
+        e.preventDefault();
+        const postForm = document.getElementById("post-menu")
+        if (postForm.style.display === "none") {
+            postForm.style.display = ""
+            if (postForm.childElementCount < 1){
+            const dockedCompose = composeContainer();
+             postForm.appendChild(dockedCompose);
+            }
+//left here was adding a feather when clicking the post botton
+            if (postForm.style.display !== "none") {
+            // change the icon of the botton
+        }
+        } else {
+            postForm.style.display = "none"
+        }
+    }
+
+    // process request and errors
     async loginRequest(obj) {
         const user = await this.adapter.loginRequest(obj);
         //calls function to setup preference cookie
@@ -40,12 +66,11 @@ class Decks {
 
         // removes login ovarlay
         document.getElementById("overlay").style.display = "none"
-
         this.renderPost();
     }
 
+    //creates a sessions & cookies in order to store user login preferences
     setCookies(user) {
-        //creates a session cookie inorder to store user login preferences
         sessionStorage['login'] = "true";
         setCookie("name", `${user.name}`);
         setCookie("email", `${user.email}`);
@@ -54,19 +79,11 @@ class Decks {
         setStorageItem("user", user);
     }
 
+    // builds the page layout along with the side menu and the columns
     renderPost() {
-        this.pageBuilder.initLayout();
-        this.pageBuilder.post();
-        // starts rendering the posts
-        // this.pageBuilder.mainMenu(user.columns, link);
-        // this.pageBuilder.column();
-
-        //     user.columns.forEach(element => { this.columns.push(element) });
-        //  console.log(this.columns)
-
-        // let p = document.createElement("p");
-        //    p.innerText = resp.alert;
-        //    this.alert.appendChild(p);
-        //    this.alert.style.display = "block";
+        this.loggedIn() ? this.pageBuilder = new PageBuilder() : false
+        this.pageBuilder
     }
+
+
 }
