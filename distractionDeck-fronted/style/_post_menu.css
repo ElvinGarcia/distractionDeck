@@ -1,0 +1,77 @@
+#postMenu{
+    display: flex;
+    flex-flow:column ;
+    padding:1em;
+    height: 98vh;
+    background-color: var(--top-divider-blue);
+    color:var(--smokey-white);
+}
+
+#postMenu>header>ul{
+    display:flex;
+    justify-content:space-between;
+    color:var(--twitter-blue);
+  }
+
+  #compose-area  form {
+    display: flex;
+    flex-flow: wrap;
+    }
+
+    #compose-area  form  textarea{
+      background-color:var(--smokey-white);
+      min-width: 14em;
+      min-height: 130px;
+      margin-top: 4px;
+      padding-top: 8px;
+      border-radius:5px;
+      resize: none;
+    }
+
+    /* Post buttom start */
+    #compose-area  form textarea + button{
+      border-radius:45px;
+      border:var(--twitter-blue) ;
+      background-color: var(--twitter-blue);
+      font-weight: 400;
+      margin-top:8px;
+      margin-left:auto;
+      padding: 9px 18px;
+      font-size: 16px;
+      color:white;
+    }
+
+    #compose-area  form textarea + button:hover{
+      background-color: var(--hover-blue);
+
+    }
+
+    #compose-area  form textarea + button:active{
+    transform: translateY(1.5px);
+    }
+
+/* Post buttom end */
+
+/* Post options buttom start */
+    #options ul li > button{
+      border-radius:45px;
+      border:var(--smokey-white) ;
+      background-color: var(--just-gray);
+      color:white;
+      font-weight: 400;
+      margin:8px 0 0 0;
+      padding: 9px 18px;
+      font-size: 16px;
+      min-width: 100%;
+    }
+
+    #options ul li > button:hover{
+        background-color: var(--hover-blue);
+    }
+
+    #options ul li > button:active{
+      transform: translateY(1.5px);
+    }
+/* Post options buttom end */
+
+
