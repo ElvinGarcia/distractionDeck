@@ -47,8 +47,8 @@ function composeContainer() {
     <div id="compose-area">
         <header>New Post</header>
 
-        <form action="">
-            <textarea placeholder="What's happening?"   maxlength = "280" required></textarea>
+        <form action="" id="post_form" name="post" method="POST">
+            <textarea placeholder="What's happening?"   maxlength = "280" required id="post-text"></textarea>
             <button id="send-button" title="Post (⌘Return)">Post</button>
         </form>
     </div>

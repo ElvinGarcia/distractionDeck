@@ -10,7 +10,7 @@ class Decks {
     }
 
 
-    // finds elements on the page columns, alert, login_form
+    // finds elements on the page columns, alert, login_form, submit button
     initiBindingsAndEventListeners() {
         this.columns = [];
         this.alert = document.querySelector("#alert");
@@ -18,6 +18,28 @@ class Decks {
         this.login_form.addEventListener("submit", this.loginForm.bind(this));
         this.post_request = document.querySelector("input#post");
         this.post_request.addEventListener("click", this.postRequest.bind(this));
+    }
+
+    //processes post submisssion
+    submission(e) {
+        e.preventDefault();
+        if (this.loggedIn) {
+            const postData = {
+                username: getCookie("username"),
+                id: getCookie("id"),
+                name: getCookie("name"),
+                post: e.target.elements["post-text"].value,
+            };
+            this.postSubmitRequest(postData);
+        } else {
+            alert("You Must Be login to Submit Posts");
+        }
+    }
+
+    // process request and errors
+    async postSubmitRequest(obj) {
+        const post = await this.adapter.postRequest(obj);
+        debugger;
     }
 
     // checks if user is logged in by checking cookie
@@ -43,13 +65,13 @@ class Decks {
         if (postForm.style.display === "none") {
             postForm.style.display = ""
             if (postForm.childElementCount < 1){
-            const dockedCompose = composeContainer();
-             postForm.appendChild(dockedCompose);
+                const dockedCompose = composeContainer();
+                postForm.appendChild(dockedCompose);
+                this.submit_request = document.querySelector("#compose-area form");
+                this.submit_request.addEventListener('submit', this.submission.bind(this));
+
             }
-//left here was adding a feather when clicking the post botton
-            if (postForm.style.display !== "none") {
-            // change the icon of the botton
-        }
+
         } else {
             postForm.style.display = "none"
         }
