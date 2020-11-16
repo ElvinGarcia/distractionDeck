@@ -25,15 +25,14 @@
 [x] create each column first and set on id to each one on the page correspoding to the json id
 [x] create the column on the page to match the id with that of the column list.
 [x] take each post find the id number of the column on the page and attach it to that column
-[] swap local storage and session storage.
+[*] swap local storage and session storage.
 
 
 
 # backend
 [] Create
     - create a form that would appear when the user presses the post button
-[] Read
-
+[x] Read
 [] Update
     - set an edit button for each tweet that would display an edit form when pressed
 [] Delete
