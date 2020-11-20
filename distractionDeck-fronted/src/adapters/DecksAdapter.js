@@ -22,9 +22,9 @@ class DecksAdapter {
       ;
   }
 
-  // left here making a request to RAILS API to submit a post
+
   postRequest(obj) {
-    return fetch(this.baseUrl + "/postRequest", {
+    return fetch(this.baseUrl + "/api/v1/posts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(obj),

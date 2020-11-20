@@ -36,12 +36,6 @@ class Decks {
         }
     }
 
-    // process request and errors
-    async postSubmitRequest(obj) {
-        const post = await this.adapter.postRequest(obj);
-        debugger;
-    }
-
     // checks if user is logged in by checking cookie
     loggedIn() {
         return (sessionStorage.getItem("login") === "true" ? true : false);
@@ -75,6 +69,12 @@ class Decks {
         } else {
             postForm.style.display = "none"
         }
+    }
+
+    // process request and errors
+    async postSubmitRequest(obj) {
+    const post = await this.adapter.postRequest(obj);
+        debugger;
     }
 
     // process request and errors
