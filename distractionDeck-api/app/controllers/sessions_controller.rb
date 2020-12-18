@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def login
     user = User.find_by(name: params[:username])
     if user.authenticate(params[:password])
-      log_in(user)
+      # log_in(user)  doesn't work
        render :json => UserSerializer.new(user).to_serialized_json, status: 200
     else
       render json: { alert: 'Invalid email/password combination' }, status: 401
@@ -10,13 +10,17 @@ class SessionsController < ApplicationController
  end
 
   def logout
-    log_out if logged_in?
-    redirect_to root_path
+    byebug
+    # doesn't work
+    # log_out if logged_in?
+    # redirect_to root_path
  end
 
   protected
 
   def auth_hash
-    request.env['omniauth.auth']
+    byebug
+    # doesn't work
+    # request.env['omniauth.auth']
   end
 end
