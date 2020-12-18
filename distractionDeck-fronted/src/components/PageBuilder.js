@@ -1,10 +1,8 @@
 
+
 class PageBuilder {
     constructor() {
-        this.columnList();
-        this.settingsMenu();
-        this.columns();
-        this.posts();
+
     }
 
     columnList() {
@@ -95,5 +93,30 @@ class PageBuilder {
      }
     }
 
+    // adds to new post to document [home]
+    // retrieves user info from stored cookies
+    post(post) {
+    // get column
+        const home = document.getElementById("Home")
+        const postList = home.getElementsByClassName("posts")[0]
 
+    // create post style with comments
+     let div = document.createElement("div");
+     div.setAttribute("class", "post");
+     div.innerHTML =`<div class="avatar"><a href="">[logo]</a></div>
+     <div class="content">
+         <div class="post-title username"><a href="">${getCookie("username")}</a></div>
+         <p>${post.body}</p>
+         <div class="post-actions">
+         <a href=""><i class="far fa-comment"></i></a>
+         <a href="">  <i class="far fa-heart"></i></a>
+         <a href="">    <i class="options">...</i></a>
+         </div>
+     </div>
+     `
+     //prepends post to column
+        postList.prepend(div);
+    }
 }
+
+

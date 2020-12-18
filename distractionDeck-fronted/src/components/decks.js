@@ -1,10 +1,13 @@
 class Decks {
     constructor() {
         this.adapter = new DecksAdapter();
+        this.pageBuilder = new PageBuilder();
         this.initiBindingsAndEventListeners();
         if (this.loggedIn()) {
             document.getElementById("overlay").style.display = "none"
             this.renderPost();
+        } else {
+            alert("you are not logged in")
         }
 
     }
@@ -16,25 +19,11 @@ class Decks {
         this.alert = document.querySelector("#alert");
         this.login_form = document.querySelector("form#login_form");
         this.login_form.addEventListener("submit", this.loginForm.bind(this));
+        //Post button
         this.post_request = document.querySelector("input#post");
         this.post_request.addEventListener("click", this.postRequest.bind(this));
     }
 
-    //processes post submisssion
-    submission(e) {
-        e.preventDefault();
-        if (this.loggedIn) {
-            const postData = {
-                username: getCookie("username"),
-                id: getCookie("id"),
-                name: getCookie("name"),
-                post: e.target.elements["post-text"].value,
-            };
-            this.postSubmitRequest(postData);
-        } else {
-            alert("You Must Be login to Submit Posts");
-        }
-    }
 
     // checks if user is logged in by checking cookie
     loggedIn() {
@@ -52,30 +41,7 @@ class Decks {
         this.login_form.reset();
     }
 
-    // post form toggle
-    postRequest(e) {
-        e.preventDefault();
-        const postForm = document.getElementById("post-menu")
-        if (postForm.style.display === "none") {
-            postForm.style.display = ""
-            if (postForm.childElementCount < 1){
-                const dockedCompose = composeContainer();
-                postForm.appendChild(dockedCompose);
-                this.submit_request = document.querySelector("#compose-area form");
-                this.submit_request.addEventListener('submit', this.submission.bind(this));
 
-            }
-
-        } else {
-            postForm.style.display = "none"
-        }
-    }
-
-    // process request and errors
-    async postSubmitRequest(obj) {
-    const post = await this.adapter.postRequest(obj);
-        debugger;
-    }
 
     // process request and errors
     async loginRequest(obj) {
@@ -103,9 +69,64 @@ class Decks {
 
     // builds the page layout along with the side menu and the columns
     renderPost() {
-        this.loggedIn() ? this.pageBuilder = new PageBuilder() : false
-        this.pageBuilder
+        if (this.loggedIn()) {
+            this.pageBuilder.columnList();
+            this.pageBuilder.settingsMenu();
+            this.pageBuilder.columns();
+            this.pageBuilder.posts();
+        } else {
+            return false
+        }
     }
 
+    //processes post submisssion
+    submission(e) {
+        e.preventDefault();
+        if (this.loggedIn) {
+            const postData = {
+                username: getCookie("username"),
+                id: getCookie("id"),
+                name: getCookie("name"),
+                post: e.target.elements["post-text"].value,
+            };
+            this.postSubmitRequest(postData);
+        } else {
+            alert("You Must Be login to Submit Posts");
+        }
+    }
+
+    // post form toggle
+    postRequest(e) {
+        e.preventDefault();
+        const postForm = document.getElementById("post-menu")
+        if (postForm.style.display === "none") {
+            postForm.style.display = ""
+            if (postForm.childElementCount < 1){
+                const dockedCompose = composeContainer();
+                postForm.appendChild(dockedCompose);
+                this.submit_request = document.querySelector("#compose-area form");
+                this.submit_request.addEventListener('submit', this.submission.bind(this));
+            }
+
+        } else {
+            postForm.style.display = "none"
+        }
+    }
+
+    // post Submit Request, process request and errors
+    async postSubmitRequest(obj) {
+        const resp = await this.adapter.postRequest(obj);
+        if (this.loggedIn()) {
+            this.pageBuilder.post(resp)
+            // const postForm = document.getElementById("post-menu");
+            //clears the form
+            document.querySelector("#post_form").reset();
+            document.getElementById("post-menu").style.display ="none"
+            //closes the compose column
+            // postForm.style.display == "none"
+        } else {
+            alert("you nust be login to post");
+        }
+    }
 
 }

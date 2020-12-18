@@ -36,6 +36,8 @@ class DecksAdapter {
          throw `Error: ${response.status}`
        }
       })
+      .then((response) => response.json())
+      ;
   }
 
 
