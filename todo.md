@@ -30,7 +30,7 @@
 
 
 # backend
-[] Create
+[x] Create
     - create a form that would appear when the user presses the post button
 [x] Read
 [] Update
