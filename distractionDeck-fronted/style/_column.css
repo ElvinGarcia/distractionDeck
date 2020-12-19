@@ -8,14 +8,17 @@
     color:var(--smokey-white);
     background-color: var(--kinda-black);
     height: 98vh;
+
 }
 
 .body-column-list > *{
     border: solid var(--just-black) 2px;
+    overflow: auto;
 }
 
 .posts{
     overflow: auto;
+    /* border: red solid 2px; */
 }
 
 .column-header{
