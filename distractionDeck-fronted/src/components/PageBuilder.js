@@ -63,7 +63,7 @@ class PageBuilder {
         }
     }
 
-    // sets the posts on each column
+    // sets the posts on each column from ascending order
     posts() {
         const columns = getcolumns();
             //  Array(5) [ {…}, {…}, {…}, {…}, {…} ]
@@ -89,9 +89,11 @@ class PageBuilder {
                     </div>
                 </div>
                 `
-            posts.appendChild(div)
-      }
-     }
+                    posts.appendChild(div)
+                }
+               return true
+        }
+
     }
 
     // adds to new post to document [home]

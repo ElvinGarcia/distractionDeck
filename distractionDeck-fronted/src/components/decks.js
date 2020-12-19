@@ -6,6 +6,7 @@ class Decks {
         if (this.loggedIn()) {
             document.getElementById("overlay").style.display = "none"
             this.renderPost();
+            this.afterInitiBindingsAndEventListeners();
         } else {
             // alert("you are not logged in")
         }
@@ -19,10 +20,24 @@ class Decks {
         this.alert = document.querySelector("#alert");
         this.login_form = document.querySelector("form#login_form");
         this.login_form.addEventListener("submit", this.loginForm.bind(this));
+    }
+
+    afterInitiBindingsAndEventListeners() {
         //Post button
         this.post_request = document.querySelector("input#post");
         this.post_request.addEventListener("click", this.postRequest.bind(this));
+    // each post option ..
+        this.post_option = document.querySelector(".options");
+    this.post_option.addEventListener("click", this.postOption.bind(this));
     }
+
+    // left here.. need to code a small popup menu with options on what to do to each post CRUD
+    postOption(e) {
+        e.preventDefault();
+        console.log(e)
+
+    }
+
 
 
     // checks if user is logged in by checking cookie
