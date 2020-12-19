@@ -7,7 +7,7 @@ class Decks {
             document.getElementById("overlay").style.display = "none"
             this.renderPost();
         } else {
-            alert("you are not logged in")
+            // alert("you are not logged in")
         }
 
     }
@@ -101,7 +101,7 @@ class Decks {
         const postForm = document.getElementById("post-menu")
         if (postForm.style.display === "none") {
             postForm.style.display = ""
-            if (postForm.childElementCount < 1){
+            if (postForm.childElementCount < 1) {
                 const dockedCompose = composeContainer();
                 postForm.appendChild(dockedCompose);
                 this.submit_request = document.querySelector("#compose-area form");
@@ -121,12 +121,13 @@ class Decks {
             // const postForm = document.getElementById("post-menu");
             //clears the form
             document.querySelector("#post_form").reset();
-            document.getElementById("post-menu").style.display ="none"
+            document.getElementById("post-menu").style.display = "none"
             //closes the compose column
             // postForm.style.display == "none"
         } else {
             alert("you nust be login to post");
         }
-    }
 
+
+    }
 }

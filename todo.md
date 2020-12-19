@@ -27,7 +27,7 @@
 [x] take each post find the id number of the column on the page and attach it to that column
 [*] swap local storage and session storage.
 [x] make the columns strollable
-
+[] add a diaglog popup when username or passwords are incorrect
 
 
 # backend

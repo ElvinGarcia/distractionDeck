@@ -1,5 +1,18 @@
 
 .body-column-list{
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Ubuntu, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Arial, ヒラギノ角ゴ Pro W3, Hiragino Kaku Gothic Pro, メイリオ, Meiryo, ＭＳ Ｐゴシック, MS PGothic;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    text-rendering: optimizelegibility;
+    scrollbar-color: rgb(101, 119, 134) rgb(21, 32, 43);
+    overflow: auto hidden ;
+    /* overflow-x: auto; */
+    /* overflow-y: hidden; */
+    /* top:0; */
+    /* right: auto;
+    left:auto; */
+
     display: grid;
     grid-auto-columns: 300px ;
     grid-auto-flow: column;
@@ -8,6 +21,8 @@
     color:var(--smokey-white);
     background-color: var(--kinda-black);
     height: 98vh;
+    width: 86vw;
+
 
 }
 
@@ -18,7 +33,7 @@
 
 .posts{
     overflow: auto;
-    /* border: red solid 2px; */
+
 }
 
 .column-header{
@@ -30,6 +45,7 @@
     overflow: hidden;
     border-bottom: 1px solid #14171a;
     background-color: var(--just-black);
+
 }
 
 .column-header > i{
