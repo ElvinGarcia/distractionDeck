@@ -67,12 +67,13 @@ class PageBuilder {
     posts() {
         const columns = getcolumns();
             //  Array(5) [ {…}, {…}, {…}, {…}, {…} ]
-        for (let i = 0; i < columns.length; i++) {
-            const columnObject = columns[i];
+        for (let i = 0; columns.length > 0;  i++) {
+            const columnObject = columns[i] ;
                 //Object { id: 6, name: "Home", user_id: 2, created_at: "2020-10-07T10:40:31.774Z", updated_at: "2020-10-07T10:40:31.774Z", posts: (2) […] }
-            const posts = document.getElementById(columnObject.name).lastElementChild;
                 // <div class="posts">
-            for (let i = 0; i < columnObject.posts.length; i++) {
+                for (let i = columnObject.posts.length-1; i > 0; i--) {
+                const posts = document.getElementById(columnObject.name).lastElementChild ;
+
                 const postObject = columnObject.posts[i];
                 // Object { id: 3, body: "blah blah blah", user_id: 2, created_at: "2020-10-09T17:57:19.765Z", updated_at: "2020-10-09T17:57:19.765Z", column_id: 6 }
                 let div = document.createElement("div");
