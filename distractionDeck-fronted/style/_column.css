@@ -7,9 +7,9 @@
     text-rendering: optimizelegibility;
     scrollbar-color: rgb(101, 119, 134) rgb(21, 32, 43);
     overflow: auto hidden ;
+    scrollbar-width:thin;
     /* overflow-x: auto; */
     /* overflow-y: hidden; */
-    /* top:0; */
     /* right: auto;
     left:auto; */
 
@@ -20,8 +20,8 @@
     grid-template-columns: repeat(auto-fill, 300px);
     color:var(--smokey-white);
     background-color: var(--kinda-black);
-    height: 98vh;
-    width: 86vw;
+    height: 99vh;
+    width: 88vw;
 
 
 }
@@ -29,6 +29,7 @@
 .body-column-list > *{
     border: solid var(--just-black) 2px;
     overflow: auto;
+    scrollbar-width:thin;
 }
 
 .posts{
@@ -40,7 +41,7 @@
     display:flex;
     position: sticky;
     top:0px;
-    justify-content: space-evenly;
+    justify-content: center;
     max-height: 50px;
     overflow: hidden;
     border-bottom: 1px solid #14171a;
