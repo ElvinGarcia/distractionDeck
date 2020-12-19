@@ -26,6 +26,7 @@
 [x] create the column on the page to match the id with that of the column list.
 [x] take each post find the id number of the column on the page and attach it to that column
 [*] swap local storage and session storage.
+[x] make the columns strollable
 
 
 
