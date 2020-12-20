@@ -27,8 +27,9 @@ class Decks {
         this.post_request = document.querySelector("input#post");
         this.post_request.addEventListener("click", this.postRequest.bind(this));
     // each post option ..
-        this.post_option = document.querySelector(".options");
-    this.post_option.addEventListener("click", this.postOption.bind(this));
+        this.post_option = document.querySelectorAll(".options");
+        this.post_option.forEach(node => { node.addEventListener("click", this.postOption)})
+    // this.post_option.addEventListener("click", this.postOption.bind(this));
     }
 
     // left here.. need to code a small popup menu with options on what to do to each post CRUD
