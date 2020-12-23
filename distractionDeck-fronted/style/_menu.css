@@ -65,7 +65,10 @@ border-color: var(--kinda-black);
 
 .dropdown-content{
   background-color:#0000;
-  border: aliceblue 1px solid;
+  border: black 1px solid;
+  border-radius: 12%;
+  box-shadow: 2px 2px 5px gray;
+  margin-top: 1%;
 }
 .dropdown-content  li:hover{
   background-color: var(--twitter-blue);
