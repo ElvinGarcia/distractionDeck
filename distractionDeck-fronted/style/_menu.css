@@ -63,4 +63,11 @@ border-color: var(--kinda-black);
    color:var(--twitter-blue);
 }
 
+.dropdown-content{
+  background-color:#0000;
+  border: aliceblue 1px solid;
+}
+.dropdown-content  li:hover{
+  background-color: var(--twitter-blue);
+}
 

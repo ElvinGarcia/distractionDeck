@@ -86,25 +86,18 @@ class PageBuilder {
                     <a href=""><i class="far fa-comment"></i></a>
                     <a href="">  <i class="far fa-heart"></i></a>
                     <a href="">    <i class="options">...</i></a>
-                    </div>
-                    <div class="dropdown-content" style="display:none;">
+
+                    <div class="dropdown-content" style="display:none">
                         <ul>
-                            <li class="is-selectable"><a href="#" data-action="embed">Embed this Tweet</a></li>
-                            <li class="is-selectable"><a href="#" data-action="reference-to">Copy link to this Tweet</a></li>
-                            <li class="is-selectable"><a href="#" data-action="message-to">Share via Direct Message</a></li>
-                            <li class="is-selectable"><a href="#" data-action="email">Share via Email</a></li>
-                            <li class="drp-h-divider"></li>
-                            <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Tweet to @mashable</a></li>
-                            <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow @mashable</a></li>
-                            <li class="is-selectable"><a href="#" data-action="message">Send a Direct Message</a></li>
-                            <li class="is-selectable"><a href="#" data-action="lists">Add or remove from Lists…</a></li>
-                            <li class="feature-customtimelines is-selectable"><a href="#" data-action="customtimelines">Add to Collection…</a></li>
-                            <li class="is-selectable"><a href="#" data-action="search-for-quoted">See who quoted this Tweet</a></li>
-                            <li class="drp-h-divider"></li>
-                            <li class="is-selectable"><a href="#" data-action="mute" class="txt-ellipsis">Mute @mashable</a></li>
-                            <li class="is-selectable"><a href="#" data-action="block" class="txt-ellipsis">Block @mashable</a></li>
-                            <li class="is-selectable"><a href="#" data-action="report-tweet" class="txt-ellipsis">Report Tweet</a></li>
+                            <li class="is-selectable"><a href="#" data-action="edit">Edit this Post</a></li>
+                            <li class="is-selectable"><a href="#" data-action="delete">Delete</a></li>
+                            <li class="is-selectable"><a href="#" data-action="reference-to">Copy link to this Post</a></li>
+                            <li class="drp-h-divider"><hr></li>
+                            <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.user.username}</a></li>
+                            <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${postObject.user.username}</a></li>
+
                         </ul>
+                    </div>
                     </div>
 
                 </div>
@@ -137,21 +130,21 @@ class PageBuilder {
          </div>
          <div class="dropdown-content" style="display:none;">
             <ul>
-                <li class="is-selectable"><a href="#" data-action="embed">Embed this Tweet</a></li>
-                <li class="is-selectable"><a href="#" data-action="reference-to">Copy link to this Tweet</a></li>
+                <li class="is-selectable"><a href="#" data-action="embed">Embed this Post</a></li>
+                <li class="is-selectable"><a href="#" data-action="reference-to">Copy link to this Post</a></li>
                 <li class="is-selectable"><a href="#" data-action="message-to">Share via Direct Message</a></li>
                 <li class="is-selectable"><a href="#" data-action="email">Share via Email</a></li>
                 <li class="drp-h-divider"></li>
-                <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Tweet to @mashable</a></li>
-                <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow @mashable</a></li>
+                <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.user.username}</a></li>
+                <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${postObject.user.username}</a></li>
                 <li class="is-selectable"><a href="#" data-action="message">Send a Direct Message</a></li>
                 <li class="is-selectable"><a href="#" data-action="lists">Add or remove from Lists…</a></li>
                 <li class="feature-customtimelines is-selectable"><a href="#" data-action="customtimelines">Add to Collection…</a></li>
-                <li class="is-selectable"><a href="#" data-action="search-for-quoted">See who quoted this Tweet</a></li>
+                <li class="is-selectable"><a href="#" data-action="search-for-quoted">See who quoted this Post</a></li>
                 <li class="drp-h-divider"></li>
-                <li class="is-selectable"><a href="#" data-action="mute" class="txt-ellipsis">Mute @mashable</a></li>
-                <li class="is-selectable"><a href="#" data-action="block" class="txt-ellipsis">Block @mashable</a></li>
-                <li class="is-selectable"><a href="#" data-action="report-tweet" class="txt-ellipsis">Report Tweet</a></li>
+                <li class="is-selectable"><a href="#" data-action="mute" class="txt-ellipsis">Mute ${postObject.user.username}</a></li>
+                <li class="is-selectable"><a href="#" data-action="block" class="txt-ellipsis">Block ${postObject.user.username}</a></li>
+                <li class="is-selectable"><a href="#" data-action="report-Post" class="txt-ellipsis">Report Post</a></li>
             </ul>
         </div>
      </div>

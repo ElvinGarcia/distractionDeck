@@ -29,13 +29,19 @@ class Decks {
     // each post option ..
         this.post_option = document.querySelectorAll(".options");
         this.post_option.forEach(node => { node.addEventListener("click", this.postOption)})
-    // this.post_option.addEventListener("click", this.postOption.bind(this));
     }
+
 
     // left here.. need to code a small popup menu with options on what to do to each post CRUD
     postOption(e) {
         e.preventDefault();
-        console.log(e)
+        // displays the dropdown memu for post option
+        const optionMenu = e.target.parentElement.nextElementSibling;
+        if (optionMenu.style.display === "none") {
+            optionMenu.style.display = "";
+        }else {
+            optionMenu.style.display = "none";
+         }
 
     }
 
