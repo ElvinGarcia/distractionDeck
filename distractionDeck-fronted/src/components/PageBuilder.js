@@ -120,7 +120,7 @@ class PageBuilder {
      let div = document.createElement("div");
      div.setAttribute("class", "post");
      div.innerHTML =`<div class="avatar"><a href="">[logo]</a></div>
-     <div class="content">
+     <div class="content" data-post-id=${postObject.id} data-user-id=${postObject.user_id}>
          <div class="post-title username"><a href="">${getCookie("username")}</a></div>
          <p>${post.body}</p>
          <div class="post-actions">
