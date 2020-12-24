@@ -31,14 +31,31 @@
 [] add a diaglog popup when username or passwords are incorrect
 
 
-# backend
+# frontend
 [x] Create
     - create a form that would appear when the user presses the post button
 [x] Read
-[] Update
-    - set an edit button for each tweet that would display an edit form when pressed
-[] Delete
-    - display and delete button for each tweet.
+- Update
+    [] set an edit button for each tweet that would display an edit form when pressed
+    [x] create a "data[]post[]id" for each post that will be used to locate it on the server
+        [] along with the above the user_id will be sent along
+        [] the edited text too
+    [] Backend
+      [] makes sure the user is still logged in
+      [] locate the post in the database
+      [] compare the received post and the database post for changes
+        [] if changes are made update the data base
+        [] send request back to the front end that the changes persisted along with the text
+        [] the front end will display the changes in the home columns towards the top and the old post will be deleted
+      [] if no changes are detected
+        [] send request back with error message that the changes didn't persist to the DB
+- Delete
+    [x] display and delete button for each post.
+      [] the post_id along with user_id will be send to the API
+      [] the API will verified that the user is logged in and the post belong to the user by locating the post
+      [] the post will be deleted from the DB
+      [] reply will be sent to the client that the post was destroyed
+      [] the client will delete the post from the home column
 
 ## routes
 

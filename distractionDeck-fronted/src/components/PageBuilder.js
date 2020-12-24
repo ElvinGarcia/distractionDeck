@@ -77,9 +77,9 @@ class PageBuilder {
                 const postObject = columnObject.posts[i];
                 // Object { id: 3, body: "blah blah blah", user_id: 2, created_at: "2020-10-09T17:57:19.765Z", updated_at: "2020-10-09T17:57:19.765Z", column_id: 6 }
                 let div = document.createElement("div");
-                div.setAttribute("class", "post");
+                    div.setAttribute("class", "post");
                 div.innerHTML =`<div class="avatar"><a href="">[logo]</a></div>
-                <div class="content">
+                <div class="content" data-post-id=${postObject.id} data-user-id=${postObject.user_id}>
                     <div class="post-title username"><a href="">${postObject.user.username}</a></div>
                     <p>${postObject.body}</p>
                     <div class="post-actions">
