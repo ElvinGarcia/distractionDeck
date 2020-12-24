@@ -64,11 +64,16 @@ border-color: var(--kinda-black);
 }
 
 .dropdown-content{
-  background-color:#0000;
-  border: black 1px solid;
-  border-radius: 12%;
-  box-shadow: 2px 2px 5px gray;
+  position:relative;
+  background-color: #1c2938;
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.7);
+  text-align: left;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
   margin-top: 1%;
+
 }
 .dropdown-content  li:hover{
   background-color: var(--twitter-blue);
