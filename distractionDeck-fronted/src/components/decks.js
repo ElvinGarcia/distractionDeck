@@ -28,24 +28,41 @@ class Decks {
         this.post_request.addEventListener("click", this.postRequest.bind(this));
     // each post option ..
         this.post_option = document.querySelectorAll(".options");
-        this.post_option.forEach(node => { node.addEventListener("click", this.postOption)})
+        this.post_option.forEach(node => { node.addEventListener("click", this.postOption.bind(this))})
     }
 
-
-    // left here.. need to code a small popup menu with options on what to do to each post CRUD
+    // adds eventListener when when option menu appears. Calls PostAction when an item is clicked.
     postOption(e) {
         e.preventDefault();
         // displays the dropdown memu for post option
         const optionMenu = e.target.parentElement.nextElementSibling;
         if (optionMenu.style.display === "none") {
             optionMenu.style.display = "";
+            const ul = e.target.parentElement.parentElement.querySelector(".dropdown-content").children[0];
+            ul.addEventListener("click", this.postAction.bind(this));
         }else {
             optionMenu.style.display = "none";
          }
 
     }
 
+    postAction(e) {
+        const action = e.dataset.action;
+        switch (action) {
+            case "edit":
 
+                break;
+            case ("delete"):
+
+                break;
+            case ("copy"):
+
+                break;
+
+            default:
+                break;
+        }
+    }
 
     // checks if user is logged in by checking cookie
     loggedIn() {
@@ -62,8 +79,6 @@ class Decks {
         this.loginRequest(user);
         this.login_form.reset();
     }
-
-
 
     // process request and errors
     async loginRequest(obj) {
@@ -113,7 +128,8 @@ class Decks {
             };
             this.postSubmitRequest(postData);
         } else {
-            alert("You Must Be login to Submit Posts");
+            document.getElementById("overlay").style.display = "none"
+            alert("You Must Be logged in to Submit Posts");
         }
     }
 
@@ -147,7 +163,7 @@ class Decks {
             //closes the compose column
             // postForm.style.display == "none"
         } else {
-            alert("you nust be login to post");
+            alert("you must be login to post");
         }
 
 
