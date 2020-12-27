@@ -80,7 +80,7 @@ class PageBuilder {
                     div.setAttribute("class", "post");
                 div.innerHTML =`<div class="avatar"><a href="">[logo]</a></div>
                 <div class="content" data-post-id=${postObject.id} data-user-id=${postObject.user_id}>
-                    <div class="post-title username"><a href="">${postObject.user.username}</a></div>
+                    <div class="post-title username"><a href="">${username}</a></div>
                     <p>${postObject.body}</p>
                     <div class="post-actions">
                     <a href=""><i class="far fa-comment"></i></a>
@@ -93,8 +93,8 @@ class PageBuilder {
                             <li class="is-selectable"><a href="#" data-action="delete">Delete</a></li>
                             <li class="is-selectable"><a href="#" data-action="reference-to">Copy link to this Post</a></li>
                             <li class="drp-h-divider"><hr></li>
-                            <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.user.username}</a></li>
-                            <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${postObject.user.username}</a></li>
+                            <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${username}</a></li>
+                            <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${username}</a></li>
 
                         </ul>
                     </div>
@@ -111,18 +111,18 @@ class PageBuilder {
 
     // adds to new post to document [home]
     // retrieves user info from stored cookies
-    post(post) {
+    post(postObject) {
     // get column
-        const home = document.getElementById("Home")
-        const postList = home.getElementsByClassName("posts")[0]
+        const home = document.getElementById("Home");
+        const postList = home.getElementsByClassName("posts")[0];
 
     // create post style with comments
      let div = document.createElement("div");
      div.setAttribute("class", "post");
      div.innerHTML =`<div class="avatar"><a href="">[logo]</a></div>
      <div class="content" data-post-id=${postObject.id} data-user-id=${postObject.user_id}>
-         <div class="post-title username"><a href="">${getCookie("username")}</a></div>
-         <p>${post.body}</p>
+         <div class="post-title username"><a href="">${postObject.user.username}</a></div>
+         <p>${postObject.body}</p>
          <div class="post-actions">
          <a href=""><i class="far fa-comment"></i></a>
          <a href=""><i class="far fa-heart"></i></a>
@@ -135,15 +135,15 @@ class PageBuilder {
                 <li class="is-selectable"><a href="#" data-action="message-to">Share via Direct Message</a></li>
                 <li class="is-selectable"><a href="#" data-action="email">Share via Email</a></li>
                 <li class="drp-h-divider"></li>
-                <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.user.username}</a></li>
-                <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${postObject.user.username}</a></li>
+                <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.username}</a></li>
+                <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${username}</a></li>
                 <li class="is-selectable"><a href="#" data-action="message">Send a Direct Message</a></li>
                 <li class="is-selectable"><a href="#" data-action="lists">Add or remove from Lists…</a></li>
                 <li class="feature-customtimelines is-selectable"><a href="#" data-action="customtimelines">Add to Collection…</a></li>
                 <li class="is-selectable"><a href="#" data-action="search-for-quoted">See who quoted this Post</a></li>
                 <li class="drp-h-divider"></li>
-                <li class="is-selectable"><a href="#" data-action="mute" class="txt-ellipsis">Mute ${postObject.user.username}</a></li>
-                <li class="is-selectable"><a href="#" data-action="block" class="txt-ellipsis">Block ${postObject.user.username}</a></li>
+                <li class="is-selectable"><a href="#" data-action="mute" class="txt-ellipsis">Mute ${username}</a></li>
+                <li class="is-selectable"><a href="#" data-action="block" class="txt-ellipsis">Block ${username}</a></li>
                 <li class="is-selectable"><a href="#" data-action="report-Post" class="txt-ellipsis">Report Post</a></li>
             </ul>
         </div>
