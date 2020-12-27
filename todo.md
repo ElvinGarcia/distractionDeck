@@ -29,11 +29,11 @@
 [x] make the columns scrollable horizontal and vertical
 [x] posts need to load from latest to oldest
 [] add a diaglog popup when username or passwords are incorrect
-
+[] on Page refresh post created while logged are not displayed
 
 # frontend
-[x] Create
-    - create a form that would appear when the user presses the post button
+- Create
+    [x] create a form that would appear when the user presses the post button
 [x] Read
 - Update
     [] set an edit button for each tweet that would display an edit form when pressed
