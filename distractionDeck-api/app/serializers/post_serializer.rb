@@ -8,7 +8,7 @@ class PostSerializer
 
   def to_serialized_json
     #options need to sanitized from revealing the password_digest
-    options = {except: [:created_at, :updated_at]}
+    options = {except: [:created_at, :updated_at], include:[user:{except:[:password_digest]}]}
     @post.to_json(options)
   end
 
