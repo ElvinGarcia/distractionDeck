@@ -28,7 +28,7 @@ class Decks {
         this.post_request.addEventListener("click", this.postRequest.bind(this));
     // each post option ..
         this.post_option = document.querySelectorAll(".options");
-        this.post_option.forEach(node => { node.addEventListener("click", this.postOption.bind(this))})
+        this.post_option.forEach(node => { node.addEventListener("click", this.postOption.bind(this)) });
     }
 
     // adds eventListener when when option menu appears. Calls PostAction when an item is clicked.
@@ -47,19 +47,23 @@ class Decks {
     }
 
     postAction(e) {
-        const action = e.dataset.action;
+        const action = e.target.dataset.action;
         switch (action) {
             case "edit":
-
+                // debugger
+                const postContent = e.target.closest(".content").querySelector(".post-title").nextElementSibling.innerText
+                const dropdown = e.target.closest(".dropdown-content");
+                dropdown.style.display = "none";
+                dropdown.parentElement.insertAdjacentHTML("afterend",editPost(postContent))
                 break;
             case ("delete"):
-
+                console.log("delete")
                 break;
             case ("copy"):
-
+                console.log("copy")
                 break;
-
             default:
+                console.log(e,"default")
                 break;
         }
     }

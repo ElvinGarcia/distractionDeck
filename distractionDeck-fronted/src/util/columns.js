@@ -1,3 +1,23 @@
+function editPost(postContent) {
+  debugger;
+  const form = `<div id="compose-area">
+        <header>Edit Post</header>
+
+        <form action="" id="post_form" name="post" method="POST">
+            <textarea maxlength = "280" required id="post-text">${postContent}</textarea>
+            <button id="send-button" title="Post (⌘Return)">Post</button>
+        </form>
+      </div>
+      <div id="options">
+        <ul>
+            <li><button> Add Images or Videos</button></li>
+            <li><button> Schedule a Post</button></li>
+            <li><button> Direct Message</button></li>
+        </ul>
+      </div>`
+  return form
+  }
+
 
 function post(obj) {
 

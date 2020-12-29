@@ -28,12 +28,6 @@ class PageBuilder {
                     <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
                     <li><a href="#">${getCookie("name")} <span>${getCookie("username")}</ span></a></li>
                     <li> <a href="#">[Logo goes here]</a></li>
-                    <li> <a href="/auth/twitter"><img
-                                src="./fronted/assests/public/static/sign-in-with-twitter-medium.png"
-                                alt="twitter-login" class="third-party-login"></a></li>
-                    <li> <a href="/auth/twitter"><img
-                                src="./fronted/assests/public/static/sign-in-with-twitter-medium.png"
-                                alt="twitter-login" class="third-party-login"></a></li>
                 </ul>`;
 
         // settings menu code
@@ -91,11 +85,10 @@ class PageBuilder {
                         <ul>
                             <li class="is-selectable"><a href="#" data-action="edit">Edit this Post</a></li>
                             <li class="is-selectable"><a href="#" data-action="delete">Delete</a></li>
-                            <li class="is-selectable"><a href="#" data-action="reference-to">Copy link to this Post</a></li>
+                            <li class="is-selectable"><a href="#" data-action="copy">Copy link to this Post</a></li>
                             <li class="drp-h-divider"><hr></li>
-                            <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${username}</a></li>
-                            <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${username}</a></li>
-
+                            <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.user.username}</a></li>
+                            <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${postObject.user.username}</a></li>
                         </ul>
                     </div>
                     </div>
@@ -129,23 +122,14 @@ class PageBuilder {
          <a href=""><i class="options">...</i></a>
          </div>
          <div class="dropdown-content" style="display:none;">
-            <ul>
-                <li class="is-selectable"><a href="#" data-action="embed">Embed this Post</a></li>
-                <li class="is-selectable"><a href="#" data-action="reference-to">Copy link to this Post</a></li>
-                <li class="is-selectable"><a href="#" data-action="message-to">Share via Direct Message</a></li>
-                <li class="is-selectable"><a href="#" data-action="email">Share via Email</a></li>
-                <li class="drp-h-divider"></li>
-                <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.username}</a></li>
-                <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${username}</a></li>
-                <li class="is-selectable"><a href="#" data-action="message">Send a Direct Message</a></li>
-                <li class="is-selectable"><a href="#" data-action="lists">Add or remove from Lists…</a></li>
-                <li class="feature-customtimelines is-selectable"><a href="#" data-action="customtimelines">Add to Collection…</a></li>
-                <li class="is-selectable"><a href="#" data-action="search-for-quoted">See who quoted this Post</a></li>
-                <li class="drp-h-divider"></li>
-                <li class="is-selectable"><a href="#" data-action="mute" class="txt-ellipsis">Mute ${username}</a></li>
-                <li class="is-selectable"><a href="#" data-action="block" class="txt-ellipsis">Block ${username}</a></li>
-                <li class="is-selectable"><a href="#" data-action="report-Post" class="txt-ellipsis">Report Post</a></li>
-            </ul>
+         <ul>
+            <li class="is-selectable"><a href="#" data-action="edit">Edit this Post</a></li>
+            <li class="is-selectable"><a href="#" data-action="delete">Delete</a></li>
+            <li class="is-selectable"><a href="#" data-action="copy">Copy link to this Post</a></li>
+            <li class="drp-h-divider"><hr></li>
+            <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.user.username}</a></li>
+            <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${postObject.user.username}</a></li>
+         </ul>
         </div>
      </div>
      `
