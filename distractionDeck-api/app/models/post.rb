@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
     belongs_to :user
     belongs_to :column
-    # belongs_to :user
-    # belongs_to :column
+    # accepts_nested_attributes_for :body, update_only: true, allow_destroy: true
+    # validates :body, unique: true
     # has_many :hastags
     # has_many :comments
 

@@ -1,6 +1,6 @@
 class Api::V1::HastagsController < ApplicationController
 
-      def new
+ def new
 
   end
 
