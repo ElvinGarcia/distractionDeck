@@ -41,4 +41,6 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  # filters out unpermitted keys on mas assigments
+  config.action_controller.action_on_unpermitted_parameters = :false
 end
