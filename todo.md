@@ -43,10 +43,10 @@
     [] Backend
       [] makes sure the user is still logged in
       [x] locate the post in the database
-      [] compare the received post and the database post for changes
-        [] if changes are made update the data base
-        [] send request back to the front end that the changes persisted along with the text
-        [] the front end will display the changes in the home columns towards the top and the old post will be deleted
+      [x] compare the received post and the database post for changes
+        [x] if changes are made update the data base
+        [x] send request back to the front end that the changes persisted along with the text
+        [x] the front end will display the changes in the home columns towards the top and the old post will be updated
       [] if no changes are detected
         [] send request back with error message that the changes didn't persist to the DB
 - Delete
