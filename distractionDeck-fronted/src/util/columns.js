@@ -1,10 +1,10 @@
-function editPost(postContent) {
-  debugger;
-  const form = `<div id="compose-area">
+function editPost(postObject) {
+  const form = `
+      <div id="edit-form-container">
+      <div id="compose-area">
         <header>Edit Post</header>
-
-        <form action="" id="post_form" name="post" method="POST">
-            <textarea maxlength = "280" required id="post-text">${postContent}</textarea>
+        <form action="" id="edit_form" name="post" data-post-id=${postObject.post_id} data-user-id=${postObject.user_id}  method="POST">
+            <textarea maxlength = "280" required id="post-text" autofocus>${postObject.content}</textarea>
             <button id="send-button" title="Post (⌘Return)">Post</button>
         </form>
       </div>
@@ -14,10 +14,10 @@ function editPost(postContent) {
             <li><button> Schedule a Post</button></li>
             <li><button> Direct Message</button></li>
         </ul>
+      </div>
       </div>`
   return form
   }
-
 
 function post(obj) {
 
@@ -35,8 +35,10 @@ function createPost() {
     <div class="avatar">[logo]</div>
       <div class="content">
         <div class="post-title username">Fast Company</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fugiat,blanditiis minus
-          cupiditate voluptatibus aperiam, odit nihil consectetur sunt laboriosam.
+          <p id="post-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fugiat,blanditiis minus
+            cupiditate voluptatibus aperiam, odit nihil consectetur sunt laboriosam.
+          </p>
         <div class="post-actions">
          <i class="far fa-comment"></i>
          <i class="far fa-heart"></i>

@@ -18,8 +18,7 @@ class DecksAdapter {
           throw `Error: ${response.status}`;
         }
       })
-      .then((response) => response.json())
-      ;
+      .then((response) => response.json());
   }
 
 
@@ -36,9 +35,23 @@ class DecksAdapter {
          throw `Error: ${response.status}`
        }
       })
-      .then((response) => response.json())
-      ;
+      .then((response) => response.json());
   }
 
-
+  putsRequest(obj) {
+    return fetch(this.baseUrl + `/api/v1/posts/${obj.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(obj)
+    }).then((response) => {
+      if (response.ok) {
+        return response;
+      } else {
+        throw `Error: ${response.status}`;
+      }
+    })
+    .then((response) => response.json())
+    ;
 }
+  }
+

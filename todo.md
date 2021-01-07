@@ -36,13 +36,13 @@
     [x] create a form that would appear when the user presses the post button
 [x] Read
 - Update
-    [] set an edit button for each tweet that would display an edit form when pressed
+    [x] set an edit button for each tweet that would display an edit form when pressed
     [x] create a "data[]post[]id" for each post that will be used to locate it on the server
-        [] along with the above the user_id will be sent along
-        [] the edited text too
+        [x] along with the above the user_id will be sent along
+        [x] the edited text too
     [] Backend
       [] makes sure the user is still logged in
-      [] locate the post in the database
+      [x] locate the post in the database
       [] compare the received post and the database post for changes
         [] if changes are made update the data base
         [] send request back to the front end that the changes persisted along with the text

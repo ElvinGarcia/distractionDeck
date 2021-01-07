@@ -47,25 +47,79 @@ class Decks {
     }
 
     postAction(e) {
+        // action selected
         const action = e.target.dataset.action;
+        // targeted postContainer
+        const postContainer = e.target.closest(".content");
+        // postObject
+        const postObject = {
+            content: postContainer.childNodes[3].innerText ,
+            post_id: postContainer.dataset.postId ,
+            user_id: postContainer.dataset.userId
+        }
         switch (action) {
             case "edit":
-                // debugger
-                const postContent = e.target.closest(".content").querySelector(".post-title").nextElementSibling.innerText
                 const dropdown = e.target.closest(".dropdown-content");
                 dropdown.style.display = "none";
-                dropdown.parentElement.insertAdjacentHTML("afterend",editPost(postContent))
+                dropdown.parentElement.insertAdjacentHTML("afterend", editPost(postObject));
+                document.querySelector("form#edit_form").addEventListener("submit", this.postEdits.bind(this))
                 break;
             case ("delete"):
-                console.log("delete")
+                console.log("delete haven't been coded")
                 break;
             case ("copy"):
-                console.log("copy")
+                console.log("copy haven't been coded")
                 break;
             default:
-                console.log(e,"default")
+                console.log("default haven't been coded")
                 break;
         }
+    }
+
+    //process edits to post
+    postEdits(e) {
+        const input = e.target.querySelector("textarea");
+        const newValue = input.value;
+        const oldValue = input.defaultValue;
+        if (newValue != oldValue) {
+            const obj = {
+                body: newValue,
+                id: e.target.dataset.postId,
+                user_id: e.target.dataset.userId
+                }
+            //preps obj for API
+            this.putsRequest(obj);
+        } else {
+            alert("no change was made")
+        }
+        e.preventDefault();
+    }
+
+    async putsRequest(obj) {
+        // sends the request if the user is loggedin
+        if(this.loggedIn()){
+            const post = await this.adapter.putsRequest(obj);
+            this.updateOnEdit(post);
+        } else {
+            this.logout()
+        }
+    }
+
+    updateOnEdit(obj) {
+            // delete form
+            document.querySelector("#edit-form-container").remove();
+            // locates post
+            let post = document.querySelector(`[data-post-id = ${CSS.escape(obj.id)}] #post-content`);
+            // updates the post with the information send from the server
+        post.innerText = obj.body;
+        }
+
+    // logouts a user
+    logout() {
+        console.log("... clearing cookies ")
+        // clears cookies from the browser
+        console.log("... refreshing the page ")
+        // browser refresh
     }
 
     // checks if user is logged in by checking cookie
@@ -83,6 +137,7 @@ class Decks {
         this.loginRequest(user);
         this.login_form.reset();
     }
+
 
     // process request and errors
     async loginRequest(obj) {

@@ -1,5 +1,5 @@
 class Api::V1::PostsController < ApplicationController
-
+  before_action :find_post, only:[:update,:show,:destroy]
 def index
 
 end
@@ -25,11 +25,28 @@ end
   end
 
   def update
-
+      if  (@post.user.id == params[:user_id].to_c) && @post.update!(post_strong_params)
+        #return JSON success message with post
+        render :json => PostSerializer.new(@post).to_serialized_json, status: 201 if @post.persisted?
+      else
+        # return JSON  error
+        render :json => "#{@post.errors.messages}", status: 500
+      end
 
   end
 
   def destroy
 
  end
+
+ private
+
+  def post_strong_params
+    params.require(:post).permit(:body)
+  end
+
+  def find_post
+    @post ||= Post.find(params[:post][:id])
+  end
+
 end

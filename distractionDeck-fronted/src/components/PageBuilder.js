@@ -11,7 +11,7 @@ class PageBuilder {
         for (let index = 0; index < columns.length; index++) {
             const column = columns[index];
             let li = document.createElement("li");
-            li.innerHTML = `<a href="#" class="${column.id}"><i class="fas fa-${column.name.toLowerCase()}"></i>${column.name}</a>`
+            li.innerHTML = `<a href="#" id="${column.id}"><i class="fas fa-${column.name.toLowerCase()}"></i>${column.name}</a>`
             ul.appendChild(li);
         }
         let columnList = document.getElementById("columnList");
@@ -44,7 +44,7 @@ class PageBuilder {
             let div = document.createElement("div");
             div.setAttribute("id",`${obj.name}`)
             div.innerHTML = `
-                <div class="column-header ${obj.id}">
+                <div class="column-header ${obj.id}" id="${obj.id}">
                     <i class="fas fa-${obj.name.toLowerCase()}"></i>
                     <h2>${obj.name}</h2>
                     <h3>${getCookie("username")}</h3>
@@ -74,8 +74,8 @@ class PageBuilder {
                     div.setAttribute("class", "post");
                 div.innerHTML =`<div class="avatar"><a href="">[logo]</a></div>
                 <div class="content" data-post-id=${postObject.id} data-user-id=${postObject.user_id}>
-                    <div class="post-title username"><a href="">${username}</a></div>
-                    <p>${postObject.body}</p>
+                    <div class="post-title username"><a href="">${postObject.user.username}</a></div>
+                    <p id="post-content">${postObject.body}</p>
                     <div class="post-actions">
                     <a href=""><i class="far fa-comment"></i></a>
                     <a href="">  <i class="far fa-heart"></i></a>
@@ -115,7 +115,7 @@ class PageBuilder {
      div.innerHTML =`<div class="avatar"><a href="">[logo]</a></div>
      <div class="content" data-post-id=${postObject.id} data-user-id=${postObject.user_id}>
          <div class="post-title username"><a href="">${postObject.user.username}</a></div>
-         <p>${postObject.body}</p>
+         <p id="post-content">${postObject.body}</p>
          <div class="post-actions">
          <a href=""><i class="far fa-comment"></i></a>
          <a href=""><i class="far fa-heart"></i></a>
