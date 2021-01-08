@@ -79,3 +79,7 @@ border-color: var(--kinda-black);
   background-color: var(--twitter-blue);
 }
 
+.is-selectable a{
+  display: block;
+
+}
