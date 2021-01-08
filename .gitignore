@@ -240,4 +240,8 @@ build-iPhoneSimulator/
 # Ignore all local history of files
 .history
 
+
+#css
+*_debuging.css
+
 # End of https://www.toptal.com/developers/gitignore/api/rails,ruby,visualstudiocode,node,macos
