@@ -128,7 +128,7 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
-
+db/development.sqlite3
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -193,7 +193,7 @@ bower.json
 /test/version_tmp/
 
 # Used by dotenv library to load environment variables.
-# .env
+ .env
 
 # Ignore Byebug command history file.
 
