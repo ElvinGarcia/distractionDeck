@@ -39,6 +39,7 @@ class Decks {
         if (optionMenu.style.display === "none") {
             optionMenu.style.display = "";
             const ul = e.target.parentElement.parentElement.querySelector(".dropdown-content").children[0];
+        // needed to determine which button was press from the dropdown menu
             ul.addEventListener("click", this.postAction.bind(this));
         }else {
             optionMenu.style.display = "none";
@@ -47,34 +48,49 @@ class Decks {
     }
 
     postAction(e) {
+        e.preventDefault();
         // action selected
         const action = e.target.dataset.action;
-        // targeted postContainer
-        const postContainer = e.target.closest(".content");
-        // postObject
-        const postObject = {
-            content: postContainer.childNodes[3].innerText ,
-            post_id: postContainer.dataset.postId ,
-            user_id: postContainer.dataset.userId
-        }
         switch (action) {
             case "edit":
+                // targeted postContainer
+                const postContainerContent = e.target.closest(".content");
+                // postObject
+                const postObject = {
+                    content:  postContainerContent.childNodes[3].innerText ,
+                    post_id:  postContainerContent.dataset.postId ,
+                    user_id:  postContainerContent.dataset.userId
+                }
                 const dropdown = e.target.closest(".dropdown-content");
                 dropdown.style.display = "none";
                 dropdown.parentElement.insertAdjacentHTML("afterend", editPost(postObject));
                 document.querySelector("form#edit_form").addEventListener("submit", this.postEdits.bind(this))
                 break;
             case ("delete"):
-                console.log("delete haven't been coded")
+                // grabs the entire post container
+                const postContainer = e.target.closest(".post");
+                // creates an object to be send to the backend
+                const obj = {
+                    post_id: postContainer.dataset.postId,
+                    user_id: postContainer.dataset.userId
+                }
+                this.destroyRequest(obj);
                 break;
             case ("copy"):
                 console.log("copy haven't been coded")
                 break;
             default:
                 console.log("default haven't been coded")
-                break;
         }
     }
+
+
+        async destroyRequest(obj) {
+            // if the user is still loggedin a request is send to the server
+            const response = this.loggedIn() && await this.adapter.deleteRequest(obj)
+            //updates the page by removing the element
+            document.querySelector(`.post[data-post-id=${CSS.escape(response.id)}]`).remove();
+        }
 
     //process edits to post
     postEdits(e) {
@@ -153,7 +169,7 @@ class Decks {
         this.renderPost();
     }
 
-    //creates a sessions & cookies in order to store user login preferences
+    //creates cookies in order to store the user's login preferences
     setCookies(user) {
         sessionStorage['login'] = "true";
         setCookie("name", `${user.name}`);

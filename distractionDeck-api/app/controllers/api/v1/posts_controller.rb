@@ -36,7 +36,13 @@ end
   end
 
   def destroy
-
+     if (@post.user.id == params[:user_id].to_c)
+      @post.destroy!
+      render :json => PostSerializer.new(@post).to_serialized_json, status: 200
+     else
+      # return JSON  error
+      render :json => "#{@post.errors.messages}", status: 500
+     end
  end
 
  private
@@ -46,7 +52,9 @@ end
   end
 
   def find_post
-    @post ||= Post.find(params[:post][:id])
+    @post ||= Post.find(params[:post_id])
+    # encapsulate if action is allow by user here to DRY up the code
+    # render :json =>{message: "record not found"}, status: 500 if !@post
   end
 
 end

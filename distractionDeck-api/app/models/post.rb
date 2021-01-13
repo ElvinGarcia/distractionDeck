@@ -1,11 +1,14 @@
 class Post < ApplicationRecord
     belongs_to :user
     belongs_to :column
-    validates :body, unique: true
+    # validates :body, unique: true
     # accepts_nested_attributes_for :body, update_only: true, allow_destroy: true
     # has_many :hastags
     # has_many :comments
-
+    validates :body,
+          :presence => {:message => "Post can't be blank." },
+          :uniqueness => {:message => "Post already exists."},
+          :length => { :maximum => 100, :message => "Must be less than 100 characters"}
     before_validation :post_init
 
 

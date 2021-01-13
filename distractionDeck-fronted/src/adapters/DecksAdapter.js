@@ -52,6 +52,24 @@ class DecksAdapter {
     })
     .then((response) => response.json())
     ;
-}
+  }
+
+
+  deleteRequest(obj) {
+      return fetch(this.baseUrl + `/api/v1/posts/${obj.post_id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(obj)
+      }).then((response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          // display ${response.Text} when error occurs 404
+          throw `Error: ${response.status}`
+        }
+       }).then((response) => response.json());
+    }
+
+
   }
 
