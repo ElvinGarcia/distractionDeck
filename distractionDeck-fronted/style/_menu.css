@@ -79,7 +79,22 @@ border-color: var(--kinda-black);
   background-color: var(--twitter-blue);
 }
 
+/* expands clickable area of selected element */
 .is-selectable a{
   display: block;
-
 }
+
+/* post action start */
+.post-actions > a > i{
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+}
+
+.post-actions > a i:hover{
+  color: var(--heart-red);
+}
+
+/* post action ends */
+
+
