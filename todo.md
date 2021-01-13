@@ -47,13 +47,13 @@
         [x] if changes are made update the data base
         [x] send request back to the front end that the changes persisted along with the text
         [x] the front end will display the changes in the home columns towards the top and the old post will be updated
-      [] if no changes are detected
+      []   if no changes are detected
         [] send request back with error message that the changes didn't persist to the DB
 - Delete
     [x] display and delete button for each post.
-      [] the post_id along with user_id will be send to the API
-      [] the API will verified that the user is logged in and the post belong to the user by locating the post
-      [] the post will be deleted from the DB
+      [x] the post_id along with user_id will be send to the API
+      [x] the API will verified that the user is logged in and the post belong to the user by locating the post
+      [x] the post will be deleted from the DB
       [] reply will be sent to the client that the post was destroyed
       [] the client will delete the post from the home column
 
@@ -75,10 +75,10 @@
 [x] js geneate new columns under column.js
 [x] js geneate individual post under post.js
 [x] create the request to the rails server BASE_URL/login
-[] create backend request into a class
-[] look into making creating these func into a class to meet requirement
 
 # notes
+[] consolidate all clickable items into one click event triggering a switch function
+  `ul.forEach(e=> e.addEventListener("click", e=> {console.log(e.target)}))`
 
 ## backend
 
