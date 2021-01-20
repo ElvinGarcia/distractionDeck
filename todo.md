@@ -28,7 +28,7 @@
 [*] swap local storage and session storage.
 [x] make the columns scrollable horizontal and vertical
 [x] posts need to load from latest to oldest
-[] add a diaglog popup when username or passwords are incorrect
+[x] add a diaglog popup when username or passwords are incorrect
 [] on Page refresh post created while logged are not displayed
 
 # frontend
@@ -40,22 +40,22 @@
     [x] create a "data[]post[]id" for each post that will be used to locate it on the server
         [x] along with the above the user_id will be sent along
         [x] the edited text too
-    [] Backend
-      [] makes sure the user is still logged in
+    [x] Backend
+      [x] makes sure the user is still logged in
       [x] locate the post in the database
       [x] compare the received post and the database post for changes
         [x] if changes are made update the data base
         [x] send request back to the front end that the changes persisted along with the text
         [x] the front end will display the changes in the home columns towards the top and the old post will be updated
-      []   if no changes are detected
-        [] send request back with error message that the changes didn't persist to the DB
+      [x]   if no changes are detected
+        [x] send request back with error message that the changes didn't persist to the DB
 - Delete
     [x] display and delete button for each post.
       [x] the post_id along with user_id will be send to the API
       [x] the API will verified that the user is logged in and the post belong to the user by locating the post
       [x] the post will be deleted from the DB
       [] reply will be sent to the client that the post was destroyed
-      [] the client will delete the post from the home column
+      [x] the client will delete the post from the home column
 
 ## routes
 
