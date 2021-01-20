@@ -85,7 +85,7 @@ class Decks {
     }
 
 
-        async destroyRequest(obj) {
+    async destroyRequest(obj) {
             // if the user is still loggedin a request is send to the server
             const response = this.loggedIn() && await this.adapter.deleteRequest(obj)
             //updates the page by removing the element
@@ -94,6 +94,7 @@ class Decks {
 
     //process edits to post
     postEdits(e) {
+        e.preventDefault();
         const input = e.target.querySelector("textarea");
         const newValue = input.value;
         const oldValue = input.defaultValue;
@@ -108,14 +109,17 @@ class Decks {
         } else {
             alert("no change was made")
         }
-        e.preventDefault();
     }
 
     async putsRequest(obj) {
         // sends the request if the user is loggedin
         if(this.loggedIn()){
             const post = await this.adapter.putsRequest(obj);
-            this.updateOnEdit(post);
+            if (!post.alert) {
+                this.updateOnEdit(post);
+            } else {
+                this.errorMessage(post.alert);
+            }
         } else {
             this.logout()
         }
@@ -158,6 +162,7 @@ class Decks {
     // process request and errors
     async loginRequest(obj) {
         const user = await this.adapter.loginRequest(obj);
+        if (!user.alert){
         //calls function to setup preference cookie
         this.setCookies(user);
 
@@ -166,7 +171,10 @@ class Decks {
 
         // removes login ovarlay
         document.getElementById("overlay").style.display = "none"
-        this.renderPost();
+            this.renderPost();
+        } else {
+            this.errorMessage(user.alert);
+        }
     }
 
     //creates cookies in order to store the user's login preferences
@@ -230,17 +238,31 @@ class Decks {
     async postSubmitRequest(obj) {
         const resp = await this.adapter.postRequest(obj);
         if (this.loggedIn()) {
-            this.pageBuilder.post(resp)
-            // const postForm = document.getElementById("post-menu");
-            //clears the form
-            document.querySelector("#post_form").reset();
-            document.getElementById("post-menu").style.display = "none"
-            //closes the compose column
-            // postForm.style.display == "none"
+            if (!resp.alert) {
+                this.pageBuilder.post(resp)
+                // const postForm = document.getElementById("post-menu");
+                //clears the form
+                document.querySelector("#post_form").reset();
+                document.getElementById("post-menu").style.display = "none"
+                //closes the compose column
+                // postForm.style.display == "none"
+            } else {
+                this.errorMessage(resp.alert);
+            }
         } else {
             alert("you must be login to post");
         }
 
 
     }
+
+    errorMessage(message){
+        const alert = document.getElementById("alert");
+        alert.style.display = "flex";
+        alert.innerText = ` ${message}`;
+        throw `Error: ${message}`
+        }
+
+
 }
+

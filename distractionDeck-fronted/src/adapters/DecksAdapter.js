@@ -10,15 +10,7 @@ class DecksAdapter {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(obj),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response;
-        } else {
-          throw `Error: ${response.status}`;
-        }
-      })
-      .then((response) => response.json());
+    }).then((response) => response.json());
   }
 
 
@@ -71,5 +63,7 @@ class DecksAdapter {
     }
 
 
-  }
+}
+
+
 

@@ -11,7 +11,8 @@ def create
     if post.persisted?
       render :json => PostSerializer.new(post).to_serialized_json, status: 201
       else
-      render :json => "#{post.errors.messages}", status: 500
+        render json: { alert: 'unable to create post' }, status: 500
+        # render :json => "#{post.errors.messages}", status: 500
     end
 end
 
@@ -30,19 +31,16 @@ end
         render :json => PostSerializer.new(@post).to_serialized_json, status: 201 if @post.persisted?
       else
         # return JSON  error
-        render :json => "#{@post.errors.messages}", status: 500
+        render json: { alert: 'unable to update the post' }, status: 500
+        # render :json => "#{@post.errors.messages}", status: 500
       end
 
   end
 
   def destroy
-     if (@post.user.id == params[:user_id].to_c)
       @post.destroy!
-      render :json => PostSerializer.new(@post).to_serialized_json, status: 200
-     else
-      # return JSON  error
-      render :json => "#{@post.errors.messages}", status: 500
-     end
+      render :json => PostSerializer.new(@post).to_serialized_json, status: 200 if @post.destroyed?
+      render json: { alert: 'unable to delete post' }, status: 500
  end
 
  private
