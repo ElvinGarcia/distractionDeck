@@ -8,7 +8,8 @@ class Decks {
             this.renderPost();
             this.afterInitiBindingsAndEventListeners();
         } else {
-            // alert("you are not logged in")
+            document.getElementById("overlay").style.display = ""
+            this.errorMessage("please login to continue")
         }
 
     }
