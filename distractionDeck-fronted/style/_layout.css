@@ -13,7 +13,6 @@ body{
 
 .sidebar{
     position: fixed;
-    /* z-index: 1; */
 }
 
 .body-column-list{
