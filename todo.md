@@ -58,7 +58,14 @@
       [x] the client will delete the post from the home column
       [] menu disappeared when clicked or hover out
       [] error messages are being displayed on the console and on the alert banner
-
+      [] `document.addEventListener("DOMContentLoaded", ready);
+// not "document.onDOMContentLoaded = ..."`
+          [https://javascript.info/onload-ondomcontentloaded](javascript.info)
+          [https://css-tricks.com/snippets/jquery/run-javascript-only-after-entire-page-has-loaded/](CSS-Tricks)
+          [https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event](MDN)
+          [https://www.w3schools.com/jsref/coll_doc_links.asp](w3school)
+          [https://stackoverflow.com/questions/807878/how-to-make-javascript-execute-after-page-load](stackoverflow)
+          [https://stackoverflow.com/questions/8922899/get-all-href-links-in-dom](Get all href links in DOM)
 ## routes
 
 [x] creaate seperate route for login
