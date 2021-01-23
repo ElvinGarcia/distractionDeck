@@ -54,8 +54,10 @@
       [x] the post_id along with user_id will be send to the API
       [x] the API will verified that the user is logged in and the post belong to the user by locating the post
       [x] the post will be deleted from the DB
-      [] reply will be sent to the client that the post was destroyed
+      [x] reply will be sent to the client that the post was destroyed
       [x] the client will delete the post from the home column
+      [] menu disappeared when clicked or hover out
+      [] error messages are being displayed on the console and on the alert banner
 
 ## routes
 
