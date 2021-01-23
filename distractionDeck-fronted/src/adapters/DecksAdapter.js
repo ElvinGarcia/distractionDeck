@@ -7,10 +7,14 @@ class DecksAdapter {
 
   loginRequest(obj) {
     return fetch(this.baseUrl + "/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(obj),
-    }).then((response) => response.json());
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(obj),
+      })
+    .then(this.validateResponse)
+    .then(this.responseAsJson)
+    .then(this.jsonResponsevalidation)
+    .catch((error) => { console.error('Error:', error); })
   }
 
 
@@ -20,14 +24,10 @@ class DecksAdapter {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(obj),
     })
-      .then((response) => {
-       if (response.ok) {
-         return response;
-       } else {
-         throw `Error: ${response.status}`
-       }
-      })
-      .then((response) => response.json());
+      .then(this.validateResponse)
+    .then(this.responseAsJson)
+    .then(this.jsonResponsevalidation)
+    .catch((error) => { console.error('Error:', error); })
   }
 
   putsRequest(obj) {
@@ -35,15 +35,11 @@ class DecksAdapter {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(obj)
-    }).then((response) => {
-      if (response.ok) {
-        return response;
-      } else {
-        throw `Error: ${response.status}`;
-      }
     })
-    .then((response) => response.json())
-    ;
+      .then(this.validateResponse)
+    .then(this.responseAsJson)
+    .then(this.jsonResponsevalidation)
+    .catch((error) => { console.error('Error:', error); })
   }
 
 
@@ -52,15 +48,31 @@ class DecksAdapter {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(obj)
-      }).then((response) => {
-        if (response.ok) {
-          return response;
-        } else {
-          // display ${response.Text} when error occurs 404
-          throw `Error: ${response.status}`
-        }
-       }).then((response) => response.json());
+      })
+        .then(this.validateResponse)
+      .then(this.responseAsJson)
+      .then(this.jsonResponsevalidation)
+      .catch((error) => { console.error('Error:', error); })
+
     }
+
+  validateResponse(response){
+    if(!response.ok){
+      throw Error (response.statusText);
+    }
+    return response
+  }
+
+  responseAsJson(response){
+    return response.json();
+  }
+
+  jsonResponsevalidation(jsonresponse) {
+    if (Array.isArray(jsonresponse)){
+      throw Error("The respose Object is that of an Array");
+    }
+    return jsonresponse
+  }
 
 
 }
