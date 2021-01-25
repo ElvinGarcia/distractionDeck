@@ -27,7 +27,8 @@ class PageBuilder {
                     <li><a href="#"> <i class="fas fa-users"></i> Accounts</a></li>
                     <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
                     <li><a href="#">${getCookie("name")} <span>${getCookie("username")}</ span></a></li>
-                    <li> <a href="#">[Logo goes here]</a></li>
+                    <li><a href="#">[Logo goes here]</a></li>
+                    <li><a href="#" id="logout-botton">LogOut</a></li>
                 </ul>`;
 
         // settings menu code
