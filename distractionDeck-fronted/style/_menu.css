@@ -41,18 +41,24 @@ background-color: var(--hover-blue);
 border-color: var(--kinda-black);
 }
 
-/* search box */
-#search{
-  position: relative;
-  border-radius: 45px;
-  border:solid 1px black ;
-  background-color: black;
-  color:var(--just-gray);
-  line-height: 25px;
-  max-height: 36px;
-  max-width: 150px;
-  padding: 4px 30px 4px 12px;
+/* logout button */
+#logout-botton{
+  max-height:3px;
+  width: 1%;
+  border-radius:45px;
+  border:var(--twitter-blue) ;
+  background-color: var(--twitter-blue);
+  color:white;
+  font-weight: 400;
+  margin:8px 0 0 0;
+  padding: 9px 10px;
+  font-size: 10px;
 }
+/* logout button hover */
+#logout-botton:hover{
+  background-color: var(--hover-blue);
+  border-color: var(--kinda-black);
+  }
 
 /* account menu  'add column' 'collapse' etc. */
 .menu{

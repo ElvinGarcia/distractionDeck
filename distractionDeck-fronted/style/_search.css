@@ -1,0 +1,12 @@
+/* search box */
+#search{
+    position: relative;
+    border-radius: 45px;
+    border:solid 1px black ;
+    background-color: black;
+    color:var(--just-gray);
+    line-height: 25px;
+    max-height: 36px;
+    max-width: 150px;
+    padding: 4px 30px 4px 12px;
+  }
