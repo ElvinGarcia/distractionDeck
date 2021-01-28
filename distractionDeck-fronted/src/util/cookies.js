@@ -21,3 +21,5 @@ function getCookie(cname) {
     var expires = "expires="+d.toUTCString();
        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/" + ";" + "SameSite" + "=" + "Lax" + ";" + "Secure";
   }
+
+
