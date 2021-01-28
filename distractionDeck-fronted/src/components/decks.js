@@ -3,20 +3,22 @@ class Decks {
         this.adapter = new DecksAdapter();
         this.pageBuilder = new PageBuilder();
         this.initiBindingsAndEventListeners();
-        if (this.loggedIn()) {
-            document.getElementById("overlay").style.display = "none"
-            this.renderPost();
-            this.afterInitiBindingsAndEventListeners();
-        } else {
-            document.getElementById("overlay").style.display = ""
-            this.errorMessage("please login to continue")
-        }
+
+        // if (this.loggedIn()) {
+        //     document.getElementById("overlay").style.display = "none"
+        //     this.renderPost();
+        //     this.afterInitiBindingsAndEventListeners();
+        // } else {
+        //     document.getElementById("overlay").style.display = ""
+        //     this.errorMessage("please login to continue")
+        // }
 
     }
 
 
     // finds elements on the page columns, alert, login_form, submit button
     initiBindingsAndEventListeners() {
+console.log("line 21 initiBindingsAndEventListeners()")
         this.columns = [];
         this.alert = document.querySelector("#alert");
         this.login_form = document.querySelector("form#login_form");
@@ -24,12 +26,15 @@ class Decks {
     }
 
     afterInitiBindingsAndEventListeners() {
+console.log("line 29 afterInitiBindingsAndEventListeners()")
         //Post button
         this.post_request = document.querySelector("input#post");
         this.post_request.addEventListener("click", this.postRequest.bind(this));
     // each post option ..
         this.post_option = document.querySelectorAll(".options");
         this.post_option.forEach(node => { node.addEventListener("click", this.postOption.bind(this)) });
+        this.logout_button = document.querySelector("#logout-botton");
+        this.logout_button.addEventListener("click", this.logout.bind(this));
     }
 
     // adds eventListener when when option menu appears. Calls PostAction when an item is clicked.
@@ -135,21 +140,37 @@ class Decks {
         post.innerText = obj.body;
         }
 
-    // logouts a user
+    // logout user
     logout() {
-        console.log("... clearing cookies ")
-        // clears cookies from the browser
-        console.log("... refreshing the page ")
-        // browser refresh
+        if (confirm("Are you sure you want to logout!")) {
+            console.log("... deleting cookies ... yum yum")
+            document.cookie = 'elvin; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; secure';
+            document.cookie = 'username; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; secure';
+            document.cookie = 'email; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; secure';
+            sessionStorage.login = false;
+            console.log("... refreshing the page ")
+            location.reload();
+          } else {
+            console.log("user cancel")
+          }
+
     }
 
     // checks if user is logged in by checking cookie
     loggedIn() {
+        console.log("checks if user is logged in by checking cookie")
         return (sessionStorage.getItem("login") === "true" ? true : false);
+    }
+
+
+    // overlay toggle
+    overlay() {
+        document.querySelector(".overlay").classList.toggle("toggle_hide")
     }
 
     // login form and triggers
     loginForm(e) {
+console.log("login form and triggers")
         e.preventDefault();
         const user = {
             username: e.target.elements["username"].value,
@@ -170,9 +191,12 @@ class Decks {
         // removes any previous alerts
         this.alert.style.display = "none";
 
-        // removes login ovarlay
-        document.getElementById("overlay").style.display = "none"
+        // removes login overlay
+        this.overlay()
+        // document.getElementById("overlay").style.display = "none"
             this.renderPost();
+        // adds eventListeners binding to new elements
+        this.loggedIn() && this.afterInitiBindingsAndEventListeners();
         } else {
             this.errorMessage(user.alert);
         }
@@ -212,7 +236,8 @@ class Decks {
             };
             this.postSubmitRequest(postData);
         } else {
-            document.getElementById("overlay").style.display = "none"
+            this.overlay()
+            // document.getElementById("overlay").style.display = "none"
             alert("You Must Be logged in to Submit Posts");
         }
     }
@@ -220,8 +245,10 @@ class Decks {
     // post form toggle
     postRequest(e) {
         e.preventDefault();
-        const postForm = document.getElementById("post-menu")
-        if (postForm.style.display === "none") {
+        const postForm = document.querySelector("#post-menu")
+
+        // if (postForm.style.display === "none")
+        if (this.loggedIn) {
             postForm.style.display = ""
             if (postForm.childElementCount < 1) {
                 const dockedCompose = composeContainer();
@@ -244,7 +271,7 @@ class Decks {
                 // const postForm = document.getElementById("post-menu");
                 //clears the form
                 document.querySelector("#post_form").reset();
-                document.getElementById("post-menu").style.display = "none"
+                document.querySelector("#post-menu").style.display = "none"
                 //closes the compose column
                 // postForm.style.display == "none"
             } else {
@@ -258,7 +285,7 @@ class Decks {
     }
 
     errorMessage(message){
-        const alert = document.getElementById("alert");
+        const alert = document.querySelector("#alert");
         alert.style.display = "flex";
         alert.innerText = ` ${message}`;
         throw `Error: ${message}`
