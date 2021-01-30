@@ -55,8 +55,8 @@ function composeContainer() {
     <div id="postMenu">
     <header>
         <ul>
-            <li>Post</li>
-            <li> <a href="">X </a> </li>
+             <li>Post</li>
+            <li> <i class="fas fa-times" data-action="close"></i> </li>
         </ul>
         <hr>
         <break>

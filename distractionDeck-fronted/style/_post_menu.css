@@ -10,7 +10,8 @@
 #postMenu>header>ul{
     display:flex;
     justify-content:space-between;
-    color:var(--twitter-blue);
+    /* color:var(--twitter-blue); */
+    color: var(--smokey-white);
   }
 
   #compose-area  form {

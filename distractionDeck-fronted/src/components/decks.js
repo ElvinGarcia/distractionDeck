@@ -85,6 +85,9 @@ console.log("line 29 afterInitiBindingsAndEventListeners()")
             case ("copy"):
                 console.log("copy haven't been coded")
                 break;
+            case ("close"):
+                console.log("toggle or destroy")
+                    break;
             default:
                 console.log("default haven't been coded")
         }
@@ -158,7 +161,6 @@ console.log("line 29 afterInitiBindingsAndEventListeners()")
 
     // checks if user is logged in by checking cookie
     loggedIn() {
-        console.log("checks if user is logged in by checking cookie")
         return (sessionStorage.getItem("login") === "true" ? true : false);
     }
 
@@ -170,7 +172,7 @@ console.log("line 29 afterInitiBindingsAndEventListeners()")
 
     // login form and triggers
     loginForm(e) {
-console.log("login form and triggers")
+console.log("line 173 login form and triggers")
         e.preventDefault();
         const user = {
             username: e.target.elements["username"].value,
@@ -242,23 +244,21 @@ console.log("login form and triggers")
         }
     }
 
-    // post form toggle
+    // post form toggle when Post button is pressed
     postRequest(e) {
         e.preventDefault();
         const postForm = document.querySelector("#post-menu")
 
-        // if (postForm.style.display === "none")
         if (this.loggedIn) {
-            postForm.style.display = ""
+            postForm.classList.toggle("toggle_hide");
             if (postForm.childElementCount < 1) {
                 const dockedCompose = composeContainer();
                 postForm.appendChild(dockedCompose);
                 this.submit_request = document.querySelector("#compose-area form");
+                this.postContainerHeader =  document.querySelectorAll("#postMenu header ul > li [data-action=close]");
                 this.submit_request.addEventListener('submit', this.submission.bind(this));
+                this.postContainerHeader.forEach((i)=>i.addEventListener('click', this.postRequest.bind(this)));
             }
-
-        } else {
-            postForm.style.display = "none"
         }
     }
 
@@ -268,11 +268,11 @@ console.log("login form and triggers")
         if (this.loggedIn()) {
             if (!resp.alert) {
                 this.pageBuilder.post(resp)
-                // const postForm = document.getElementById("post-menu");
                 //clears the form
                 document.querySelector("#post_form").reset();
                 document.querySelector("#post-menu").style.display = "none"
                 //closes the compose column
+                console.log("line 273")
                 // postForm.style.display == "none"
             } else {
                 this.errorMessage(resp.alert);
