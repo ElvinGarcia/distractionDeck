@@ -252,9 +252,9 @@ class Decks {
                 const dockedCompose = composeContainer();
                 postForm.appendChild(dockedCompose);
                 this.submit_request = document.querySelector("#compose-area form");
-                this.postContainerHeader =  document.querySelectorAll("#postMenu header ul > li [data-action=close]");
+                this.postContainerHeader =  document.querySelector("[data-action=" + CSS.escape("close") + "]").parentElement;
                 this.submit_request.addEventListener('submit', this.submission.bind(this))
-                this.postContainerHeader.forEach((i) => i.addEventListener('click', this.postRequest.bind(this)));
+                this.postContainerHeader.addEventListener('click', this.postRequest.bind(this));
                 postForm.classList.toggle("toggle_hide");
             } else {
             postForm.classList.toggle("toggle_hide");
