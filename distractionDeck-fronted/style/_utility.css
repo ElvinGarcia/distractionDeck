@@ -3,7 +3,6 @@
 .toggle_hide{
     display: none;
 }
-
 /* needs to transform items on hover */
 .actionable{
     cursor: pointer;

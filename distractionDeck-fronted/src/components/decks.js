@@ -18,7 +18,6 @@ class Decks {
 
     // finds elements on the page columns, alert, login_form, submit button
     initiBindingsAndEventListeners() {
-console.log("line 21 initiBindingsAndEventListeners()")
         this.columns = [];
         this.alert = document.querySelector("#alert");
         this.login_form = document.querySelector("form#login_form");
@@ -26,7 +25,6 @@ console.log("line 21 initiBindingsAndEventListeners()")
     }
 
     afterInitiBindingsAndEventListeners() {
-console.log("line 29 afterInitiBindingsAndEventListeners()")
         //Post button
         this.post_request = document.querySelector("input#post");
         this.post_request.addEventListener("click", this.postRequest.bind(this));
@@ -172,7 +170,6 @@ console.log("line 29 afterInitiBindingsAndEventListeners()")
 
     // login form and triggers
     loginForm(e) {
-console.log("line 173 login form and triggers")
         e.preventDefault();
         const user = {
             username: e.target.elements["username"].value,
@@ -236,7 +233,9 @@ console.log("line 173 login form and triggers")
                 name: getCookie("name"),
                 post: e.target.elements["post-text"].value,
             };
-            this.postSubmitRequest(postData);
+
+            this.postSubmitRequest(postData) &&  this.postRequest(e)
+
         } else {
             this.overlay()
             // document.getElementById("overlay").style.display = "none"
@@ -245,19 +244,20 @@ console.log("line 173 login form and triggers")
     }
 
     // post form toggle when Post button is pressed
-    postRequest(e) {
+     postRequest(e) {
         e.preventDefault();
         const postForm = document.querySelector("#post-menu")
-
-        if (this.loggedIn) {
-            postForm.classList.toggle("toggle_hide");
-            if (postForm.childElementCount < 1) {
+        if (this.loggedIn()) {
+            if (postForm.classList.contains("toggle_hide") && !postForm.childElementCount ) {
                 const dockedCompose = composeContainer();
                 postForm.appendChild(dockedCompose);
                 this.submit_request = document.querySelector("#compose-area form");
                 this.postContainerHeader =  document.querySelectorAll("#postMenu header ul > li [data-action=close]");
-                this.submit_request.addEventListener('submit', this.submission.bind(this));
-                this.postContainerHeader.forEach((i)=>i.addEventListener('click', this.postRequest.bind(this)));
+                this.submit_request.addEventListener('submit', this.submission.bind(this))
+                this.postContainerHeader.forEach((i) => i.addEventListener('click', this.postRequest.bind(this)));
+                postForm.classList.toggle("toggle_hide");
+            } else {
+            postForm.classList.toggle("toggle_hide");
             }
         }
     }
@@ -270,12 +270,10 @@ console.log("line 173 login form and triggers")
                 this.pageBuilder.post(resp)
                 //clears the form
                 document.querySelector("#post_form").reset();
-                document.querySelector("#post-menu").style.display = "none"
-                //closes the compose column
-                console.log("line 273")
-                // postForm.style.display == "none"
+                return true
             } else {
                 this.errorMessage(resp.alert);
+                return false
             }
         } else {
             alert("you must be login to post");
