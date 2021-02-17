@@ -81,12 +81,12 @@ class PageBuilder {
                     <div class="post-title username"><a href="">${postObject.user.username}</a></div>
                     <p id="post-content">${postObject.body}</p>
                     <div class="post-actions">
-                    <a href=""><i class="far fa-comment"></i></a>
-                    <a href="">  <i class="far fa-heart"></i></a>
-                    <a href="">    <i class="options">...</i></a>
-
-                    <div class="dropdown-content">
-                        <ul>
+                    <ul class="post-actions reactions">
+                    <li><a href=""><i class="far fa-comment"></i></a></li>
+                    <li><a href=""> <i class="far fa-heart"></i></a></li>
+                    <li class="options">
+                        <a href="">....</a>
+                        <ul class="dropdown-content ">
                             <li class="is-selectable"><a href="#" data-action="edit">Edit this Post</a></li>
                             <li class="is-selectable"><a href="#" data-action="delete">Delete</a></li>
                             <li class="is-selectable"><a href="#" data-action="copy">Copy link to this Post</a></li>
@@ -94,7 +94,11 @@ class PageBuilder {
                             <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.user.username}</a></li>
                             <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${postObject.user.username}</a></li>
                         </ul>
-                    </div>
+                    </li>
+                    </ul>
+
+
+
                     </div>
 
                 </div>
