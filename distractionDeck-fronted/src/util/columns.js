@@ -56,7 +56,7 @@ function composeContainer() {
     <header>
         <ul>
              <li>Post</li>
-            <li> <i class="fas fa-times" data-action="close"></i> </li>
+            <i> <i class="fas fa-times" data-action="close"></i> </i>
         </ul>
         <hr>
         <break>
