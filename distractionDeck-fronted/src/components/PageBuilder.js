@@ -82,17 +82,15 @@ class PageBuilder {
                     <p id="post-content">${postObject.body}</p>
                     <div class="post-actions">
                     <ul class="post-actions reactions">
-                    <li><a href=""><i class="far fa-comment"></i></a></li>
-                    <li><a href=""> <i class="far fa-heart"></i></a></li>
+                    <li><a href=""><i class="far fa-comment" data-action="comment"></i></a></li>
+                    <li><a href=""> <i class="far fa-heart" data-action="like"></i></a></li>
                     <li class="options">
-                        <a href="">....</a>
+                        <a href=""data-action="more_options">....</a>
                         <ul class="dropdown-content ">
                             <li class="is-selectable"><a href="#" data-action="edit">Edit this Post</a></li>
                             <li class="is-selectable"><a href="#" data-action="delete">Delete</a></li>
                             <li class="is-selectable"><a href="#" data-action="copy">Copy link to this Post</a></li>
-                            <li class="drp-h-divider"><hr></li>
-                            <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.user.username}</a></li>
-                            <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${postObject.user.username}</a></li>
+
                         </ul>
                     </li>
                     </ul>

@@ -69,21 +69,6 @@ border-color: var(--kinda-black);
    color:var(--twitter-blue);
 }
 
-.dropdown-content{
-  position:relative;
-  background-color: #1c2938;
-  color: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,.7);
-  text-align: left;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
-  margin-top: 1%;
-
-}
-.dropdown-content  li:hover{
-  background-color: var(--twitter-blue);
-}
 
 /* expands clickable area of selected element */
 .is-selectable a{
@@ -91,14 +76,52 @@ border-color: var(--kinda-black);
 }
 
 /* post action start */
-.post-actions > a > i{
-  display: inline-block;
-  position: relative;
-  padding: 10px;
+.post-actions> ul >li{
+  display:inline-block;
+  position:relative;
+  margin: auto;
+  width: 20%;
+  padding-left:1em;
+
+}
+/* gives color to the heart and diaglog gliphy on hover */
+.post-actions .reactions > li > a i:hover {
+  color: red;
 }
 
-.post-actions > a i:hover{
-  color: var(--heart-red);
+.dropdown-content{
+  display: none;
+  position:absolute;
+  background-color: #1c2938;
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.7);
+  text-align: left;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  /* margin-top: 1%; */
+  right: -5em;
+  width: 14em ;
+
+}
+.dropdown-content  li:hover{
+  background-color: var(--twitter-blue);
+}
+.dropdown-content li > a:hover {
+  color: var(--hover-blue);
+
+}
+
+
+/* gives color to the elipsy on hover */
+.options  a:hover {
+  color:red;
+}
+
+.options:hover .dropdown-content {
+  display: block;
+
+
 }
 
 /* post action ends */
