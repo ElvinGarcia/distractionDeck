@@ -3,16 +3,6 @@ class Decks {
         this.adapter = new DecksAdapter();
         this.pageBuilder = new PageBuilder();
         this.initiBindingsAndEventListeners();
-
-        // if (this.loggedIn()) {
-        //     document.getElementById("overlay").style.display = "none"
-        //     this.renderPost();
-        //     this.afterInitiBindingsAndEventListeners();
-        // } else {
-        //     document.getElementById("overlay").style.display = ""
-        //     this.errorMessage("please login to continue")
-        // }
-
     }
 
 
@@ -28,28 +18,20 @@ class Decks {
         //Post button
         this.post_request = document.querySelector("input#post");
         this.post_request.addEventListener("click", this.postRequest.bind(this));
-    // each post option ..
-        this.post_option = document.querySelectorAll(".options");
-        this.post_option.forEach(node => { node.addEventListener("click", this.postOption.bind(this)) });
+
+        // all options on a post such as comment , like and more options
+        this.post_actions = document.querySelectorAll(".post-actions.reactions");
+        this.post_actions.forEach(node => { node.addEventListener("click", this.postAction.bind(this)) });
+        // each post option ..
+        this.post_option = document.querySelector(".dropdown-content");
+        this.post_option.addEventListener("click", this.postAction.bind(this));
+            // this.post_option.forEach(node => { node.addEventListener("click", this.postAction.bind(this)) });
+
         this.logout_button = document.querySelector("#logout-botton");
         this.logout_button.addEventListener("click", this.logout.bind(this));
     }
 
-    // adds eventListener when when option menu appears. Calls PostAction when an item is clicked.
-    postOption(e) {
-        e.preventDefault();
-        // displays the dropdown memu for post option
-        const optionMenu = e.target.parentElement.nextElementSibling;
-        if (optionMenu.style.display === "none") {
-            optionMenu.style.display = "";
-            const ul = e.target.parentElement.parentElement.querySelector(".dropdown-content").children[0];
-        // needed to determine which button was press from the dropdown menu
-            ul.addEventListener("click", this.postAction.bind(this));
-        }else {
-            optionMenu.style.display = "none";
-         }
 
-    }
 
     postAction(e) {
         e.preventDefault();
@@ -65,9 +47,9 @@ class Decks {
                     post_id:  postContainerContent.dataset.postId ,
                     user_id:  postContainerContent.dataset.userId
                 }
-                const dropdown = e.target.closest(".dropdown-content");
-                dropdown.style.display = "none";
+                const dropdown = e.target.parentElement.parentElement;
                 dropdown.parentElement.insertAdjacentHTML("afterend", editPost(postObject));
+                e.stopPropagation()
                 document.querySelector("form#edit_form").addEventListener("submit", this.postEdits.bind(this))
                 break;
             case ("delete"):
@@ -86,8 +68,18 @@ class Decks {
             case ("close"):
                 console.log("toggle or destroy")
                     break;
+            case ("like"):
+                console.log("like was selected do something")
+                break;
+            case ("comment"):
+                console.log(`${action} was selected`)
+                break;
+            case ("more_options"):
+                //toggle the hidden menu when the elipse is pressed
+                e.target.parentElement.querySelector(".dropdown-content").classList.toggle("toggle_hide");
+                break;
             default:
-                console.log("default haven't been coded")
+
         }
     }
 
