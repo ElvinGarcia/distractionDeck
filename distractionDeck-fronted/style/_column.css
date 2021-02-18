@@ -28,13 +28,13 @@
 
 .body-column-list > *{
     border: solid var(--just-black) 2px;
-    overflow: unset;
+    overflow:auto;
     scrollbar-width:thin;
+    height:99vh;
 }
 
 .posts{
     display: absolute;
-    height:97%;
 }
 
 .column-header{
