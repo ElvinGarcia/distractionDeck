@@ -19,13 +19,9 @@ class Decks {
         this.post_request = document.querySelector("input#post");
         this.post_request.addEventListener("click", this.postRequest.bind(this));
 
-        // all options on a post such as comment , like and more options
+        // all options on a post such as comment , like, more options and sub options
         this.post_actions = document.querySelectorAll(".post-actions.reactions");
         this.post_actions.forEach(node => { node.addEventListener("click", this.postAction.bind(this)) });
-        // each post option ..
-        this.post_option = document.querySelector(".dropdown-content");
-        this.post_option.addEventListener("click", this.postAction.bind(this));
-            // this.post_option.forEach(node => { node.addEventListener("click", this.postAction.bind(this)) });
 
         this.logout_button = document.querySelector("#logout-botton");
         this.logout_button.addEventListener("click", this.logout.bind(this));
@@ -34,7 +30,6 @@ class Decks {
 
 
     postAction(e) {
-        e.preventDefault();
         // action selected
         const action = e.target.dataset.action;
         switch (action) {
@@ -43,14 +38,16 @@ class Decks {
                 const postContainerContent = e.target.closest(".content");
                 // postObject
                 const postObject = {
-                    content:  postContainerContent.childNodes[3].innerText ,
-                    post_id:  postContainerContent.dataset.postId ,
-                    user_id:  postContainerContent.dataset.userId
+                    content: postContainerContent.childNodes[3].innerText,
+                    post_id: postContainerContent.dataset.postId,
+                    user_id: postContainerContent.dataset.userId
                 }
-                const dropdown = e.target.parentElement.parentElement;
-                dropdown.parentElement.insertAdjacentHTML("afterend", editPost(postObject));
-                e.stopPropagation()
-                document.querySelector("form#edit_form").addEventListener("submit", this.postEdits.bind(this))
+                this.dropdown = e.target.parentElement.parentElement;
+                // dropdown.parentElement.insertAdjacentHTML("afterend", editPost(postObject));
+                this.dropdown.parentElement.insertAdjacentHTML("afterend", editPost(postObject));
+                this.edit_form = document.querySelector("#compose-area > form");
+                this.edit_form.addEventListener("submit", this.postEdits.bind(this));
+                e.preventDefault();
                 break;
             case ("delete"):
                 // grabs the entire post container
@@ -69,6 +66,10 @@ class Decks {
                 console.log("toggle or destroy")
                     break;
             case ("like"):
+                debugger
+                const post = e.target.closest(".post");
+                column = document.getElementById("Favorite")
+                e.preventDefault
                 console.log("like was selected do something")
                 break;
             case ("comment"):
@@ -77,6 +78,7 @@ class Decks {
             case ("more_options"):
                 //toggle the hidden menu when the elipse is pressed
                 e.target.parentElement.querySelector(".dropdown-content").classList.toggle("toggle_hide");
+                e.preventDefault();
                 break;
             default:
 
@@ -84,9 +86,9 @@ class Decks {
     }
 
 
-    async destroyRequest(obj) {
+    async destroyRequest(obj){
             // if the user is still loggedin a request is send to the server
-            const response = this.loggedIn() && await this.adapter.deleteRequest(obj)
+        const response = this.loggedIn() && await this.adapter.deleteRequest(obj)
             //updates the page by removing the element
             document.querySelector(`.post[data-post-id=${CSS.escape(response.id)}]`).remove();
         }
@@ -94,20 +96,22 @@ class Decks {
     //process edits to post
     postEdits(e) {
         e.preventDefault();
-        const input = e.target.querySelector("textarea");
-        const newValue = input.value;
-        const oldValue = input.defaultValue;
-        if (newValue != oldValue) {
+                const input = e.target.querySelector("textarea");
+                const newValue = input.value;
+                const oldValue = input.defaultValue;
+                if(newValue != oldValue) {
             const obj = {
                 body: newValue,
-                id: e.target.dataset.postId,
+                post_id: e.target.dataset.postId,
                 user_id: e.target.dataset.userId
-                }
+            }
             //preps obj for API
             this.putsRequest(obj);
-        } else {
-            alert("no change was made")
-        }
+                } else {
+                    console.log("no change were made")
+                    e.preventDefault();
+                }
+
     }
 
     async putsRequest(obj) {
@@ -175,6 +179,7 @@ class Decks {
     // process request and errors
     async loginRequest(obj) {
         const user = await this.adapter.loginRequest(obj);
+        console.log(user)
         if (!user.alert){
         //calls function to setup preference cookie
         this.setCookies(user);
@@ -225,7 +230,7 @@ class Decks {
                 name: getCookie("name"),
                 post: e.target.elements["post-text"].value,
             };
-
+            // if left expression is true it gets executed otherwise the one on the right does
             this.postSubmitRequest(postData) &&  this.postRequest(e)
 
         } else {
@@ -244,6 +249,7 @@ class Decks {
                 const dockedCompose = composeContainer();
                 postForm.appendChild(dockedCompose);
                 this.submit_request = document.querySelector("#compose-area form");
+                // close X when editing the form
                 this.postContainerHeader =  document.querySelector("[data-action=" + CSS.escape("close") + "]").parentElement;
                 this.submit_request.addEventListener('submit', this.submission.bind(this))
                 this.postContainerHeader.addEventListener('click', this.postRequest.bind(this));
@@ -259,7 +265,10 @@ class Decks {
         const resp = await this.adapter.postRequest(obj);
         if (this.loggedIn()) {
             if (!resp.alert) {
-                this.pageBuilder.post(resp)
+                createPost(resp);
+                // rebinds newly created post to eventslistners
+                this.afterInitiBindingsAndEventListeners()
+                // this.pageBuilder.post(resp)
                 //clears the form
                 document.querySelector("#post_form").reset();
                 return true

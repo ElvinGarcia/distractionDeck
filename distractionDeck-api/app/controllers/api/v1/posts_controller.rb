@@ -39,8 +39,11 @@ end
 
   def destroy
       @post.destroy!
-      render :json => PostSerializer.new(@post).to_serialized_json, status: 200 if @post.destroyed?
-      render json: { alert: 'unable to delete post' }, status: 500
+      if (@post.destroyed?)
+        render :json => PostSerializer.new(@post).to_serialized_json, status: 200
+      else
+        render json: { alert: 'unable to delete post' }, status: 500
+      end
  end
 
  private
@@ -51,7 +54,6 @@ end
 
   def find_post
     @post ||= Post.find(params[:post_id])
-    # encapsulate if action is allow by user here to DRY up the code
     # render :json =>{message: "record not found"}, status: 500 if !@post
   end
 

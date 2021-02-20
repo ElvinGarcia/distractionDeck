@@ -56,7 +56,7 @@ class DecksAdapter {
 
     }
 
-  validateResponse(response){
+  validateResponse(response) {
     if(!response.ok){
       throw Error (response.statusText);
     }

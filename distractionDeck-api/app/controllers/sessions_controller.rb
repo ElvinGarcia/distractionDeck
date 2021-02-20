@@ -9,17 +9,12 @@ class SessionsController < ApplicationController
  end
 
   def logout
-    byebug
-    # doesn't work
-    # log_out if logged_in?
-    # redirect_to root_path
  end
 
   protected
 
   def auth_hash
     byebug
-    # doesn't work
-    # request.env['omniauth.auth']
+
   end
 end

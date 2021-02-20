@@ -48,7 +48,7 @@ class PageBuilder {
                 <div class="column-header ${obj.id}" id="${obj.id}">
                     <i class="fas fa-${obj.name.toLowerCase()}"></i>
                     <h2>${obj.name}</h2>
-                    <h3>${getCookie("username")}</h3>
+                    <h3 class="username h3">${getCookie("username")}</h3>
                     <i class="fas fa-sliders-h"></i>
                 </div>
                 <div class="posts">
@@ -66,9 +66,8 @@ class PageBuilder {
             const columnObject = columns[i] ;
                 //Object { id: 6, name: "Home", user_id: 2, created_at: "2020-10-07T10:40:31.774Z", updated_at: "2020-10-07T10:40:31.774Z", posts: (2) […] }
                 // <div class="posts">
-                for (let i = columnObject.posts.length-1; i > 0; i--) {
+            for (let i = columnObject.posts.length - 1; i > 0; i--) {
                 const posts = document.getElementById(columnObject.name).lastElementChild ;
-
                 const postObject = columnObject.posts[i];
                 // Object { id: 3, body: "blah blah blah", user_id: 2, created_at: "2020-10-09T17:57:19.765Z", updated_at: "2020-10-09T17:57:19.765Z", column_id: 6 }
                 let div = document.createElement("div");
@@ -108,42 +107,6 @@ class PageBuilder {
 
     }
 
-    // adds to new post to document [home]
-    // retrieves user info from stored cookies
-    post(postObject) {
-    // get column
-        const home = document.getElementById("Home");
-        const postList = home.getElementsByClassName("posts")[0];
-
-    // create post style with comments
-     let div = document.createElement("div");
-     div.setAttribute("class", "post");
-     div.setAttribute("data-post-id", `${postObject.id}`);
-     div.setAttribute("data-user-id", `${postObject.user_id}`);
-     div.innerHTML =`<div class="avatar"><a href="">[logo]</a></div>
-     <div class="content" data-post-id=${postObject.id} data-user-id=${postObject.user_id}>
-         <div class="post-title username"><a href="">${postObject.user.username}</a></div>
-         <p id="post-content">${postObject.body}</p>
-         <div class="post-actions">
-         <a href=""><i class="far fa-comment actionable"></i></a>
-         <a href=""><i class="far fa-heart actionable"></i></a>
-         <a href=""><i class="options actionable">...</i></a>
-         </div>
-         <div class="dropdown-content">
-         <ul>
-            <li class="is-selectable actionable"><a href="#" data-action="edit">Edit this Post</a></li>
-            <li class="is-selectable actionable"><a href="#" data-action="delete">Delete</a></li>
-            <li class="is-selectable actionable"><a href="#" data-action="copy">Copy link to this Post</a></li>
-            <li class="drp-h-divider"><hr></li>
-            <li class="is-selectable"><a href="#" data-action="mention" class="txt-ellipsis">Post to ${postObject.user.username}</a></li>
-            <li class="is-selectable"><a href="#" data-action="unfollow" class="txt-ellipsis">Unfollow ${postObject.user.username}</a></li>
-         </ul>
-        </div>
-     </div>
-     `
-     //prepends post to column
-        postList.prepend(div);
-    }
 }
 
 

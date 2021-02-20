@@ -54,3 +54,16 @@ line-height: 50px;
 font-size: 20px;
 font-weight: 400;
 }
+
+.username{
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.7);
+  /* text-align: right; */
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 25px;
+  margin: 5% 5% 0 5%;
+  /* margin-top: 1%; */
+   /* right: -5em; */
+  /* width: 14em ; */
+}
