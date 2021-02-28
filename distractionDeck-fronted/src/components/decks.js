@@ -1,7 +1,10 @@
 class Decks {
     constructor() {
         this.adapter = new DecksAdapter();
-        this.pageBuilder = new PageBuilder();
+        this.pageLayout = new PageLayout();
+        this.post = new Post();
+        this.columns = new Columns();
+
         this.initiBindingsAndEventListeners();
     }
 
