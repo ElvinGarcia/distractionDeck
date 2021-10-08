@@ -1,61 +1,48 @@
-const API = "http://localhost:3000";
+const API = "https://localhost/api/v1/";
 
-class DecksAdapter {
+class DecksAdapter extends Storage {
   constructor() {
+    super();
     this.baseUrl = API;
   }
 
-  loginRequest(obj) {
-    return fetch(this.baseUrl + "/login", {
-        method: "POST",
+  async loginRequest(obj) {
+    return await this.serverRequest(obj, "login");
+    // const c = await this.serverRequest(obj, "login");
+    // debugger
+
+  }
+
+  async postRequest(obj) {
+      return await this.serverRequest(obj, "posts");
+
+  }
+
+  async putsRequest(obj) {
+      return await serverRequest(obj, `posts/${obj.id}`, "PUT");
+
+  }
+
+  async deleteRequest(obj) {
+      return await serverRequest(obj, `posts/${obj.post_id}`, "DELETE");
+
+  }
+
+
+  async serverRequest(obj, path, method = "POST") {
+        const resp =  await fetch(this.baseUrl + path, {
+        method: method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(obj),
       })
-    .then(this.validateResponse)
-    .then(this.responseAsJson)
-    .then(this.jsonResponsevalidation)
-    .catch((error) => { console.error('Error:', error); })
+
+    this.validateResponse(resp);
+    const jsonResponse = this.responseAsJson(resp);
+    return this.jsonResponsevalidation(jsonResponse);
   }
 
 
-  postRequest(obj) {
-    return fetch(this.baseUrl + "/api/v1/posts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(obj),
-    })
-      .then(this.validateResponse)
-    .then(this.responseAsJson)
-    .then(this.jsonResponsevalidation)
-    .catch((error) => { console.error('Error:', error); })
-  }
-
-  putsRequest(obj) {
-    return fetch(this.baseUrl + `/api/v1/posts/${obj.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(obj)
-    })
-      .then(this.validateResponse)
-    .then(this.responseAsJson)
-    .then(this.jsonResponsevalidation)
-    .catch((error) => { console.error('Error:', error); })
-  }
-
-
-  deleteRequest(obj) {
-      return fetch(this.baseUrl + `/api/v1/posts/${obj.post_id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(obj)
-      })
-        .then(this.validateResponse)
-      .then(this.responseAsJson)
-      .then(this.jsonResponsevalidation)
-      .catch((error) => { console.error('Error:', error); })
-
-    }
-
+    // validation and server response classes
   validateResponse(response) {
     if(!response.ok){
       throw Error (response.statusText);
@@ -63,7 +50,7 @@ class DecksAdapter {
     return response
   }
 
-  responseAsJson(response){
+  responseAsJson(response) {
     return response.json();
   }
 

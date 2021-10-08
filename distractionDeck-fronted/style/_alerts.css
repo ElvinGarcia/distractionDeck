@@ -1,6 +1,6 @@
 
-#alert{
-display: none ;
+.alert{
+display: inline-block ;
 position: absolute;
 color: #842029;
 background-color: #f8d7da;
@@ -9,4 +9,5 @@ border-radius: 5% 5%;
 opacity: 0.83;
 transition: opacity 1.6s;
 z-index: 2;
+border: red solid 144px;;
 }

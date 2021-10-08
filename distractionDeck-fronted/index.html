@@ -12,33 +12,29 @@
 
 
 <body>
-    <div id="alert" class="alert">
+    <div id="alert" class="alert toggle_hide">
 
     </div>
-    <!-- <div  class="z-index-1 overlay">
+
+     <div  class="z-index-1 overlay toggle_hide">
         <div class="login-container">
             <img src="assests/public/static/heart-and-zero-neon-light-signage-2694434.jpg"
                 alt="heart with neon light signage" id="heart_signage">
             <form id="login_form" name="login" action="" method="POST">
                 <fieldset>
                     <legend> Login To Get Distracted </legend>
-
                     <label for="username">User Name:</label>
-                    must add required property before deployment
-                    <input type="text" name="username" id="username"  autofocus>
-
+                    <input type="text" name="username" id="username"  autofocus
+                     required>
                     <label for="password">Password:</label>
-                    must add required property before deployment
-                    <input type="password" name="password" id="password" >
-
+                    <input type="password" name="password" id="password" required >
                     <input type="submit" value="login">
                 </fieldset>
             </form>
         </div>
-    </div> -->
+    </div>
 
     <div class="wrapper">
-
         <div class="sidebar">
             <!-- search bar -->
 
@@ -78,11 +74,15 @@
 
 </body>
 
-
-<script src="src/components/columns.js"></script>
 <script src="src/util/storage.js"></script>
+<script src="src/components/eventBinding.js"></script>
+<script src="src/components/user.js"></script>
+<script src="src/util/sanitizer.js"></script>
+<script src="src/util/validation.js"></script>
 <script src="src/adapters/DecksAdapter.js"></script>
+<script src="src/components/overlay.js"></script>
 <script src="src/components/post.js"></script>
+<script src="src/components/columns.js"></script>
 <script src="src/components/pageLayout.js"></script>
 <script src="src/components/decks.js"></script>
 <script src="src/components/app.js"></script>

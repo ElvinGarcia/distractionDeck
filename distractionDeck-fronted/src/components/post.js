@@ -1,6 +1,9 @@
-
-class Post{
+// need to extend the adapter class
+// need to extend the eventBinding class
+// class Post extends DecksAdapter
+class Post {
     constructor(){
+
 
     }
 
@@ -53,7 +56,7 @@ class Post{
 
     }
 
-     createPost(postObject) {
+    createPost(postObject) {
 
         // get column
             const home = document.getElementById("Home");
@@ -92,7 +95,7 @@ class Post{
             postList.prepend(div);
     }
 
-     editPost(postObject) {
+    editPost(postObject) {
         const form = `
             <div id="edit-form-container">
             <div id="compose-area">
@@ -114,43 +117,64 @@ class Post{
         return form
         }
 
-     composeContainer() {
-            let div = document.createElement("div");
-            div.innerHTML = `
-              <div id="postMenu">
-              <header>
-                  <ul>
-                       <li>Post</li>
-                      <i> <i class="fas fa-times" data-action="close"></i> </i>
-                  </ul>
-                  <hr>
-                  <break>
-              </header>
-              <div id='acconts'>
-                  <p>From :
-                  ${getCookie("name")}
-                  </p>
-              </div>
-              <div id="compose-area">
-                  <header>New Post</header>
+    deletePost(element) {
+        // grabs the entire post container
+         const postContainer = element.target.closest(".post");
 
-                  <form action="" id="post_form" name="post" method="POST">
-                      <textarea placeholder="What's happening?"   maxlength = "280" required id="post-text"></textarea>
-                      <button id="send-button" title="Post (⌘Return)">Post</button>
-                  </form>
-              </div>
-              <div id="options">
-                  <ul>
-                      <li><button> Add Images or Videos</button></li>
-                      <li><button> Schedule a Post</button></li>
-                      <li><button> Direct Message</button></li>
-                  </ul>
-              </div>
-              </div>
-               `
+        // creates an object to be send to the backend
+         const obj = {
+          post_id: postContainer.dataset.postId,
+          user_id: postContainer.dataset.userId
+         }
+        // sends object to the server via adapter class
+        //this.destroyRequest(obj);
 
-            return div;
-          }
+    //
+        // async destroyRequest(obj){
+        //     // if the user is still loggedin a request is send to the server
+        // const response = this.loggedIn() && await this.adapter.deleteRequest(obj)
+        //     //updates the page by removing the element
+        // document.querySelector(`.post[data-post-id=${CSS.escape(response.id)}]`).remove();
+        // }
+    }
+
+    composeContainer() {
+               let div = document.createElement("div");
+               div.innerHTML = `
+                 <div id="postMenu">
+                 <header>
+                     <ul>
+                          <li>Post</li>
+                         <i> <i class="fas fa-times" data-action="close"></i> </i>
+                     </ul>
+                     <hr>
+                     <break>
+                 </header>
+                 <div id='acconts'>
+                     <p>From :
+                     ${getCookie("name")}
+                     </p>
+                 </div>
+                 <div id="compose-area">
+                     <header>New Post</header>
+
+                     <form action="" id="post_form" name="post" method="POST">
+                         <textarea placeholder="What's happening?"   maxlength = "280" required id="post-text"></textarea>
+                         <button id="send-button" title="Post (⌘Return)">Post</button>
+                     </form>
+                 </div>
+                 <div id="options">
+                     <ul>
+                         <li><button> Add Images or Videos</button></li>
+                         <li><button> Schedule a Post</button></li>
+                         <li><button> Direct Message</button></li>
+                     </ul>
+                 </div>
+                 </div>
+                  `
+
+               return div;
+        }
 
 
 }
