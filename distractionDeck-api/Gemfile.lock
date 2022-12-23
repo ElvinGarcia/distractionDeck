@@ -181,7 +181,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jsonapi-serializer
   listen (~> 3.2)
-  puma (~> 4.1)
+  puma (~> 4.3)
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.1)
   spring
